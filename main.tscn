@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://p84w4tbd8ig7"]
+[gd_scene load_steps=4 format=3 uid="uid://p84w4tbd8ig7"]
 
 [ext_resource type="PackedScene" uid="uid://cd36fbnt00w6x" path="res://scenes/entities/player/player.tscn" id="1_vpbm1"]
+[ext_resource type="PackedScene" uid="uid://u28qnnxdmv8d" path="res://scenes/entities/enemy/enemy.tscn" id="2_cvslk"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4qb2k"]
 
@@ -11,11 +12,21 @@
 [node name="View" type="Node2D" parent="."]
 
 [node name="Player" parent="View" instance=ExtResource("1_vpbm1")]
-position = Vector2(553, 86)
+position = Vector2(132, 99)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="View"]
-position = Vector2(579, 641)
+[node name="Enemy" parent="View" node_paths=PackedStringArray("move_line") instance=ExtResource("2_cvslk")]
+position = Vector2(2022, 270)
+move_line = NodePath("../Line2D")
+
+[node name="Enemy2" parent="View" instance=ExtResource("2_cvslk")]
+position = Vector2(2031, 797)
+
+[node name="WorldCollider_Floor" type="StaticBody2D" parent="View"]
+position = Vector2(916, 1066)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="View/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="View/WorldCollider_Floor"]
 shape = SubResource("WorldBoundaryShape2D_4qb2k")
+
+[node name="Line2D" type="Line2D" parent="View"]
+points = PackedVector2Array(1992, 183, 1727, 379, 1265, 481, 1162, 199, 1287, 102, 1668, 146, 1492, 289, 1582, 532, 1543, 921, 1351, 970, 1163, 851, 861, 635, 816, 259, 756, 91, 592, 106, 533, 373, 645, 670, 647, 927, 486, 973, 338, 827, 312, 554, 307, 283, -257, 299)

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://u28qnnxdmv8d"]
+
+[ext_resource type="Script" path="res://scenes/entities/enemy/enemy.gd" id="1_2on6v"]
+[ext_resource type="Script" path="res://scenes/entities/enemy/movement.gd" id="1_kyk81"]
+[ext_resource type="Texture2D" uid="uid://b0xjmvgxjrmet" path="res://icon.svg" id="2_gsqkb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g7i4m"]
+radius = 70.89
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_2on6v")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_g7i4m")
+
+[node name="Process" type="Node" parent="."]
+
+[node name="Movement" type="Node" parent="Process"]
+script = ExtResource("1_kyk81")
+_target_close_distance = 1.0
+
+[node name="View" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="View"]
+modulate = Color(1, 0.57363, 0.483606, 1)
+texture = ExtResource("2_gsqkb")
