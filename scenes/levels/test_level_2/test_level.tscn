@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://brwlfj8mxhq8g"]
+
+[ext_resource type="Script" path="res://scenes/levels/test_level_2/test_level.gd" id="1_fapem"]
+[ext_resource type="PackedScene" uid="uid://u28qnnxdmv8d" path="res://scenes/entities/enemy/enemy.tscn" id="1_vlrj8"]
+[ext_resource type="PackedScene" uid="uid://bdq5du7k4xhrj" path="res://scenes/objects/door/door.tscn" id="2_dlt06"]
+[ext_resource type="Script" path="res://scenes/levels/test_level_2/enemy_spawner.gd" id="2_xee0m"]
+[ext_resource type="PackedScene" uid="uid://cd36fbnt00w6x" path="res://scenes/entities/player/player.tscn" id="3_r0b6h"]
+[ext_resource type="PackedScene" uid="uid://ch8jtthg7hr7p" path="res://scenes/entities/bot/bot.tscn" id="4_d55dc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tqkoj"]
+distance = -52.0179
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_c2sp3"]
+vertices = PackedVector2Array(1873, 1042, 55, 1037, 64, 61, 1870, 56)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(45, 1047, 1884, 1053, 1880, 46, 55, 52)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="TestLevel" type="Node2D"]
+script = ExtResource("1_fapem")
+obstacle = ExtResource("1_vlrj8")
+
+[node name="process" type="Node" parent="."]
+
+[node name="EnemySpawner" type="Node2D" parent="process"]
+position = Vector2(2116, 569)
+script = ExtResource("2_xee0m")
+
+[node name="view" type="Node2D" parent="."]
+
+[node name="Boundaries" type="Node2D" parent="view"]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="view/Boundaries"]
+position = Vector2(956, 1081)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="view/Boundaries/StaticBody2D2"]
+position = Vector2(0, -51)
+shape = SubResource("WorldBoundaryShape2D_tqkoj")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="view/Boundaries/StaticBody2D2"]
+position = Vector2(-10, -1028)
+rotation = 3.13697
+shape = SubResource("WorldBoundaryShape2D_tqkoj")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="view/Boundaries/StaticBody2D2"]
+position = Vector2(-913, -601)
+rotation = 1.57636
+shape = SubResource("WorldBoundaryShape2D_tqkoj")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="view/Boundaries/StaticBody2D2"]
+position = Vector2(918, -543)
+rotation = 4.70204
+shape = SubResource("WorldBoundaryShape2D_tqkoj")
+metadata/_edit_group_ = true
+
+[node name="Obstacles" type="Node2D" parent="view"]
+position = Vector2(2116, 566)
+
+[node name="Door" parent="view" instance=ExtResource("2_dlt06")]
+visible = false
+position = Vector2(1494, 851)
+
+[node name="Player" parent="view" instance=ExtResource("3_r0b6h")]
+position = Vector2(174, 155)
+floor_constant_speed = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="view"]
+navigation_polygon = SubResource("NavigationPolygon_c2sp3")
+
+[node name="Bot" parent="view" instance=ExtResource("4_d55dc")]
+position = Vector2(1922, 204)

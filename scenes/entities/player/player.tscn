@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cd36fbnt00w6x"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/movement.gd" id="1_0rjib"]
-[ext_resource type="Texture2D" uid="uid://tgjjcr6ly2a3" path="res://scenes/entities/player/Character.png" id="2_7odd2"]
+[ext_resource type="Texture2D" uid="uid://c6un28yetg271" path="res://scenes/entities/player/Character.png" id="2_7odd2"]
 [ext_resource type="Script" path="res://scenes/entities/player/Collision.gd" id="2_50ek1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obvfc"]
@@ -31,6 +31,13 @@ position = Vector2(0, -21)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_7odd2")
 
+<<<<<<< HEAD
+=======
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+enabled = false
+
+>>>>>>> abc00a2 (added test level with spawner)
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
