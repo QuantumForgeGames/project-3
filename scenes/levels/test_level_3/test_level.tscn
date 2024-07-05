@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://brwlfj8mxhq8g"]
 
-[ext_resource type="Script" path="res://scenes/levels/test_level_2/test_level.gd" id="1_fapem"]
+[ext_resource type="Script" path="res://scenes/levels/test_level_3/test_level.gd" id="1_fapem"]
 [ext_resource type="PackedScene" uid="uid://u28qnnxdmv8d" path="res://scenes/entities/enemy/enemy.tscn" id="1_vlrj8"]
 [ext_resource type="PackedScene" uid="uid://bdq5du7k4xhrj" path="res://scenes/objects/door/door.tscn" id="2_dlt06"]
-[ext_resource type="Script" path="res://scenes/levels/test_level_2/enemy_spawner.gd" id="2_xee0m"]
+[ext_resource type="Script" path="res://scenes/levels/test_level_3/enemy_spawner.gd" id="2_xee0m"]
 [ext_resource type="PackedScene" uid="uid://cd36fbnt00w6x" path="res://scenes/entities/player/player.tscn" id="3_r0b6h"]
 [ext_resource type="PackedScene" uid="uid://ch8jtthg7hr7p" path="res://scenes/entities/bot/bot.tscn" id="4_d55dc"]
 
