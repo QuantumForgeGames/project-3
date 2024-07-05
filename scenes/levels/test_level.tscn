@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bab87cxrl5fpb"]
+
+[ext_resource type="PackedScene" uid="uid://cd36fbnt00w6x" path="res://scenes/entities/player/player.tscn" id="1_42q2n"]
+[ext_resource type="Script" path="res://scenes/levels/test_level.gd" id="1_mpwqe"]
+[ext_resource type="PackedScene" uid="uid://ch8jtthg7hr7p" path="res://scenes/entities/bot/bot.tscn" id="3_x7lk7"]
+[ext_resource type="PackedScene" uid="uid://bdq5du7k4xhrj" path="res://scenes/objects/door/door.tscn" id="4_r5k2g"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_c2sp3"]
+vertices = PackedVector2Array(1074, 784, 336, 769, 341, 51, 1097, 367, 3122, 70, 2130, 381, 2451, 895, 3147, 792, 2762, 920)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 5, 4, 7, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(326, 779, 1084, 795, 1106, 377, 2124, 391, 2446, 905, 2762, 931, 3158, 799, 3132, 61, 332, 41)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="TestLevel" type="Node2D" node_paths=PackedStringArray("bot")]
+script = ExtResource("1_mpwqe")
+bot = NodePath("Bot")
+
+[node name="Door" parent="." instance=ExtResource("4_r5k2g")]
+position = Vector2(1494, 851)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-30, -193)
+polygon = PackedVector2Array(172, 194, 148, 673, 260, 673, 257, 966, 273, 1171, 522, 1183, 560, 1049, 894, 1042, 953, 1191, 1214, 1191, 1210, 1025, 1182, 653, 1291, 661, 1345, 1028, 1398, 1179, 1656, 1192, 1639, 780, 1807, 773, 1811, 622, 2030, 644, 2036, 841, 2428, 1173, 2802, 1197, 2996, 1124, 3280, 1118, 3465, 1184, 3927, 1203, 3863, 199, 4031, 195, 4037, 1280, 32, 1272, 29, 195)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_42q2n")]
+position = Vector2(223, 25)
+floor_constant_speed = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_c2sp3")
+
+[node name="Bot" parent="." instance=ExtResource("3_x7lk7")]
+position = Vector2(1922, 204)

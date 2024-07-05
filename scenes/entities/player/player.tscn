@@ -1,23 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd36fbnt00w6x"]
+[gd_scene load_steps=6 format=3 uid="uid://cd36fbnt00w6x"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/movement.gd" id="1_0rjib"]
-[ext_resource type="Texture2D" uid="uid://b0xjmvgxjrmet" path="res://icon.svg" id="2_t3bhu"]
+[ext_resource type="Texture2D" uid="uid://tgjjcr6ly2a3" path="res://scenes/entities/player/Character.png" id="2_7odd2"]
+[ext_resource type="Script" path="res://scenes/entities/player/Collision.gd" id="2_50ek1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g7i4m"]
-radius = 70.89
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obvfc"]
+radius = 50.0
+height = 190.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_krptl"]
+radius = 48.0
 
 [node name="Player" type="CharacterBody2D"]
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_g7i4m")
+shape = SubResource("CapsuleShape2D_obvfc")
 
 [node name="Process" type="Node" parent="."]
 
 [node name="Movement" type="Node" parent="Process"]
 script = ExtResource("1_0rjib")
 
+[node name="Collision" type="Node" parent="Process"]
+script = ExtResource("2_50ek1")
+
 [node name="View" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite2D" parent="View"]
-texture = ExtResource("2_t3bhu")
+position = Vector2(0, -21)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7odd2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(45, -19)
+shape = SubResource("CircleShape2D_krptl")
+
+[connection signal="area_entered" from="Area2D" to="Process/Collision" method="_on_area_2d_area_entered"]

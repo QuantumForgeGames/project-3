@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch8jtthg7hr7p"]
+
+[ext_resource type="Texture2D" uid="uid://ccfbv82a0x0fd" path="res://scenes/entities/bot/Bot.png" id="1_8j3yq"]
+[ext_resource type="Script" path="res://scenes/entities/bot/bot.gd" id="1_l7w6h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qicln"]
+radius = 52.0
+height = 138.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pqxmp"]
+radius = 51.0
+height = 136.0
+
+[node name="Bot" type="CharacterBody2D"]
+position = Vector2(940, 502)
+script = ExtResource("1_l7w6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_qicln")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_8j3yq")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 6.0
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="." groups=["bot"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_pqxmp")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

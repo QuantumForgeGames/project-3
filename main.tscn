@@ -15,10 +15,12 @@
 position = Vector2(132, 99)
 
 [node name="Enemy" parent="View" node_paths=PackedStringArray("move_line") instance=ExtResource("2_cvslk")]
+visible = false
 position = Vector2(2022, 270)
 move_line = NodePath("../Line2D")
 
 [node name="Enemy2" parent="View" instance=ExtResource("2_cvslk")]
+visible = false
 position = Vector2(2031, 797)
 
 [node name="WorldCollider_Floor" type="StaticBody2D" parent="View"]
