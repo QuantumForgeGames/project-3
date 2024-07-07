@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bagrv80vxbeak"]
+[gd_scene load_steps=7 format=3 uid="uid://bagrv80vxbeak"]
 
-[ext_resource type="Texture2D" uid="uid://dvc3cg54yrlis" path="res://scenes/objects/floor.png" id="1_fqm3u"]
-[ext_resource type="Script" path="res://scenes/levels/test_level_2.gd" id="1_kllhq"]
-[ext_resource type="Script" path="res://scenes/levels/TestLevel2Player.gd" id="2_m8506"]
-[ext_resource type="Texture2D" uid="uid://tgjjcr6ly2a3" path="res://scenes/entities/player/Character.png" id="4_b73ip"]
-[ext_resource type="Texture2D" uid="uid://cv550o2bpkptg" path="res://scenes/objects/Pizza.png" id="5_g8qnh"]
+[ext_resource type="Texture2D" uid="uid://wo5jymx1bhi0" path="res://scenes/objects/floor.png" id="1_fqm3u"]
+[ext_resource type="Texture2D" uid="uid://c6un28yetg271" path="res://scenes/entities/player/Character.png" id="4_b73ip"]
+[ext_resource type="Texture2D" uid="uid://iui5gjl2k4jg" path="res://scenes/objects/Pizza.png" id="5_g8qnh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjrsh"]
 size = Vector2(3841, 65.5)
@@ -17,7 +15,6 @@ height = 238.0
 radius = 47.676
 
 [node name="TestLevel2" type="Node2D"]
-script = ExtResource("1_kllhq")
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(0, 985.83)
@@ -254,7 +251,6 @@ centered = false
 position = Vector2(954, 541)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("2_m8506")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CapsuleShape2D_6ky2v")

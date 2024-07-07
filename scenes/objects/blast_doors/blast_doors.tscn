@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://yl6w74en5kkn"]
+
+[ext_resource type="Script" path="res://scenes/objects/blast_doors/blast_doors.gd" id="1_okget"]
+[ext_resource type="Script" path="res://scenes/objects/blast_doors/movement.gd" id="2_klw27"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxf3h"]
+size = Vector2(60, 540)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_so34e"]
+size = Vector2(60, 540)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_voge4"]
+size = Vector2(60, 540)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s307k"]
+size = Vector2(60, 540)
+
+[node name="BlastDoors" type="Node2D"]
+script = ExtResource("1_okget")
+
+[node name="process" type="Node" parent="."]
+
+[node name="Movement" type="Node" parent="process"]
+script = ExtResource("2_klw27")
+
+[node name="view" type="Node2D" parent="."]
+
+[node name="Door_Top" type="StaticBody2D" parent="view"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="view/Door_Top"]
+position = Vector2(0, -270)
+shape = SubResource("RectangleShape2D_jxf3h")
+
+[node name="Sprite" type="Sprite2D" parent="view/Door_Top"]
+texture = SubResource("PlaceholderTexture2D_so34e")
+offset = Vector2(0, -270)
+
+[node name="Door_Bottom" type="StaticBody2D" parent="view"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="view/Door_Bottom"]
+position = Vector2(0, 270)
+shape = SubResource("RectangleShape2D_voge4")
+
+[node name="Sprite" type="Sprite2D" parent="view/Door_Bottom"]
+texture = SubResource("PlaceholderTexture2D_s307k")
+offset = Vector2(0, 270)

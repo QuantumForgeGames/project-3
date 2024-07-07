@@ -1,0 +1,15 @@
+[gd_scene load_steps=8 format=3 uid="uid://csapnv2bsg2wn"]
+
+[ext_resource type="Script" path="res://scenes/auto/scene_manager/scene_manager.gd" id="1_xfldy"]
+[ext_resource type="PackedScene" uid="uid://c4k5vp15vukdy" path="res://scenes/levels/main_menu/main_menu.tscn" id="2_xg846"]
+[ext_resource type="PackedScene" uid="uid://f1qcv2jj0du6" path="res://scenes/levels/settings_menu/settings_menu.tscn" id="3_oktu1"]
+[ext_resource type="PackedScene" uid="uid://c88i10i6pfkxs" path="res://scenes/levels/test_base_level/base_level.tscn" id="4_1aj28"]
+[ext_resource type="PackedScene" uid="uid://ol3cjkie1dvl" path="res://scenes/levels/test_level_1/test_level.tscn" id="5_2sw70"]
+[ext_resource type="PackedScene" uid="uid://bagrv80vxbeak" path="res://scenes/levels/test_level_2/test_level_2.tscn" id="6_ox3rs"]
+[ext_resource type="PackedScene" uid="uid://brwlfj8mxhq8g" path="res://scenes/levels/test_level_3/test_level.tscn" id="7_bv38r"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_xfldy")
+main_menu_scene = ExtResource("2_xg846")
+settings_menu_scene = ExtResource("3_oktu1")
+level_scenes = Array[PackedScene]([ExtResource("4_1aj28"), ExtResource("5_2sw70"), ExtResource("6_ox3rs"), ExtResource("7_bv38r")])
