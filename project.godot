@@ -11,9 +11,17 @@ config_version=5
 [application]
 
 config/name="Project 3"
-run/main_scene="res://scenes/levels/selector/selector.tscn"
+run/main_scene="res://scenes/levels/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SceneManager="*res://scenes/auto/scene_manager/scene_manager.tscn"
+
+[debug]
+
+gdscript/warnings/integer_division=0
 
 [display]
 
