@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd36fbnt00w6x"]
+[gd_scene load_steps=9 format=3 uid="uid://cd36fbnt00w6x"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/movement.gd" id="1_0rjib"]
+[ext_resource type="Script" path="res://scenes/entities/player/player.gd" id="1_3a0mm"]
 [ext_resource type="Texture2D" uid="uid://c6un28yetg271" path="res://scenes/entities/player/Character.png" id="2_7odd2"]
 [ext_resource type="Script" path="res://scenes/entities/player/Collision.gd" id="2_50ek1"]
+[ext_resource type="Script" path="res://scripts/systems/basic_health.gd" id="4_0wo8a"]
+[ext_resource type="PackedScene" uid="uid://b63an5xu4n3jf" path="res://scenes/systems/health.tscn" id="6_f0kxb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obvfc"]
 radius = 50.0
@@ -12,33 +15,41 @@ height = 190.0
 radius = 48.0
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_3a0mm")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_obvfc")
 
-[node name="Process" type="Node" parent="."]
+[node name="process" type="Node" parent="."]
 
-[node name="Movement" type="Node" parent="Process"]
+[node name="Movement" type="Node" parent="process"]
 script = ExtResource("1_0rjib")
 
-[node name="Collision" type="Node" parent="Process"]
+[node name="Collision" type="Node" parent="process"]
 script = ExtResource("2_50ek1")
 
-[node name="View" type="Node2D" parent="."]
+[node name="Health" type="Node" parent="process"]
+script = ExtResource("4_0wo8a")
 
-[node name="Sprite" type="Sprite2D" parent="View"]
+[node name="view" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="view"]
 position = Vector2(0, -21)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_7odd2")
+
+[node name="Health" parent="view" instance=ExtResource("6_f0kxb")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
 enabled = false
 
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(45, -19)
 shape = SubResource("CircleShape2D_krptl")
 
-[connection signal="area_entered" from="Area2D" to="Process/Collision" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2D" to="process/Collision" method="_on_area_2d_area_entered"]
