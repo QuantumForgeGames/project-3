@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c88i10i6pfkxs"]
+[gd_scene load_steps=6 format=3 uid="uid://c88i10i6pfkxs"]
 
 [ext_resource type="Script" path="res://scenes/levels/test_base_level/base_level.gd" id="1_ljp63"]
 [ext_resource type="Script" path="res://scripts/systems/basic_spawner.gd" id="2_06y4u"]
+[ext_resource type="Script" path="res://scripts/systems/parallax_scroller.gd" id="2_lknes"]
+[ext_resource type="Texture2D" uid="uid://cy4oq4jdjc62v" path="res://assets/images/temp/main.png" id="3_0133k"]
 [ext_resource type="PackedScene" uid="uid://yl6w74en5kkn" path="res://scenes/objects/blast_doors/blast_doors.tscn" id="3_xciec"]
 
 [node name="BaseLevel" type="Node2D"]
@@ -10,6 +12,7 @@ script = ExtResource("1_ljp63")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
+visible = false
 follow_viewport_enabled = true
 
 [node name="Control" type="Control" parent="CanvasLayer"]
@@ -61,6 +64,20 @@ grow_vertical = 2
 text = "Show Settings Menu"
 
 [node name="view" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="view"]
+scroll_offset = Vector2(3.75, 0)
+script = ExtResource("2_lknes")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="view/ParallaxBackground"]
+motion_offset = Vector2(100, 0)
+motion_mirroring = Vector2(4608, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="view/ParallaxBackground/ParallaxLayer"]
+position = Vector2(2304, 540)
+scale = Vector2(4, 4)
+texture = ExtResource("3_0133k")
 
 [node name="BlastDoorSpawner" type="Node2D" parent="view"]
 position = Vector2(2004, 540)
