@@ -1,7 +1,7 @@
 extends Node
 
 
-const SCROLL_SPEED :float = 100
+const SCROLL_SPEED :float = 200.0
 
 
 func _process (_delta_ :float) -> void:
