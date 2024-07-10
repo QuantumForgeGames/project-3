@@ -7,4 +7,4 @@ extends Node2D
 @export var bot: CharacterBody2D
 
 func _ready():
-    polygon_2d.polygon = collision_polygon_2d.polygon
+	polygon_2d.polygon = collision_polygon_2d.polygon

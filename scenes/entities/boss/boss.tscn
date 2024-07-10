@@ -1,0 +1,229 @@
+[gd_scene load_steps=17 format=3 uid="uid://1h4og74ox6c5"]
+
+[ext_resource type="Script" path="res://scenes/entities/boss/boss.gd" id="1_7wqi8"]
+[ext_resource type="Texture2D" uid="uid://b8gk2p6xxsbpf" path="res://scenes/entities/boss/boss_sprite_sheet.png" id="1_nhj6o"]
+[ext_resource type="Script" path="res://scenes/entities/boss/FiniteStateMachine.gd" id="2_s8df8"]
+[ext_resource type="Script" path="res://scenes/entities/boss/Idle.gd" id="3_uje48"]
+[ext_resource type="Script" path="res://scenes/entities/boss/Shoot.gd" id="5_2v0re"]
+[ext_resource type="PackedScene" uid="uid://1dm8mitdwjgo" path="res://scenes/entities/boss/bullet.tscn" id="6_58deo"]
+[ext_resource type="Script" path="res://scenes/entities/boss/Dash.gd" id="6_e72ym"]
+[ext_resource type="Script" path="res://scenes/entities/boss/Move.gd" id="7_a8hum"]
+
+[sub_resource type="Animation" id="Animation_jjb4a"]
+resource_name = "idle"
+length = 0.500008
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2, 0]
+}
+
+[sub_resource type="Animation" id="Animation_n8glk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uwcjg"]
+resource_name = "label_boss_defeated_fade"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8flyh"]
+resource_name = "shoot"
+length = 0.30001
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 4, 5, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ogkdg"]
+_data = {
+"RESET": SubResource("Animation_n8glk"),
+"attack": SubResource("Animation_8flyh"),
+"idle": SubResource("Animation_jjb4a"),
+"label_boss_defeated_fade": SubResource("Animation_uwcjg")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4qok"]
+bg_color = Color(0.992628, 0.342509, 0.362941, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bi45e"]
+radius = 70.0
+height = 242.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kyqj1"]
+radius = 451.004
+
+[node name="Boss" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_7wqi8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_nhj6o")
+hframes = 3
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ogkdg")
+}
+autoplay = "idle"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+custom_minimum_size = Vector2(500, 40)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -27.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_w4qok")
+value = 29.26
+
+[node name="Label" type="Label" parent="UI/ProgressBar"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = -70.0
+offset_right = 347.0
+offset_bottom = -3.0
+theme_override_font_sizes/font_size = 48
+text = "Cell Boss"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = -33.5
+offset_right = 101.5
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Boss Defeated"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Debug" type="Label" parent="."]
+offset_left = -84.0
+offset_top = -198.0
+offset_right = 66.0
+offset_bottom = -131.0
+theme_override_font_sizes/font_size = 48
+text = "Debug"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bi45e")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_kyqj1")
+
+[node name="FiniteStateMachine" type="Node2D" parent="."]
+script = ExtResource("2_s8df8")
+
+[node name="Idle" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("3_uje48")
+
+[node name="Shoot" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("5_2v0re")
+bullet_node = ExtResource("6_58deo")
+
+[node name="Dash" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("6_e72ym")
+
+[node name="Move" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("7_a8hum")
+
+[node name="AoE" type="Node2D" parent="FiniteStateMachine"]
+
+[node name="Injured" type="Node2D" parent="FiniteStateMachine"]
+
+[node name="Die" type="Node2D" parent="FiniteStateMachine"]
+
+[node name="ShootTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 3.0
+autostart = true
+
+[node name="DashTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+autostart = true
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="FiniteStateMachine/Idle" method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="FiniteStateMachine/Idle" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="FiniteStateMachine/Idle" method="_on_cooldown_timer_timeout"]
