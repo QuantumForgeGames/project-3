@@ -17,7 +17,6 @@ func _ready () -> void:
     tween.set_loops().tween_interval(3.0).finished.connect(random_dir)
 
     var random_loop = func(f):
-        # random_dir.call()
         get_tree().create_timer(randf_range(1, 5)).timeout.connect(f.bind(f))
         _spawn()
     random_loop.call(random_loop)
