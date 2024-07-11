@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://p84w4tbd8ig7"]
+
+[ext_resource type="Script" path="res://scenes/levels/1_main/main.gd" id="1_a8bjw"]
+[ext_resource type="Script" path="res://scenes/levels/1_main/Level.gd" id="2_d0qed"]
+[ext_resource type="PackedScene" uid="uid://cd36fbnt00w6x" path="res://scenes/entities/player/player.tscn" id="2_p3ut0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4qb2k"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_a8bjw")
+
+[node name="Process" type="Node" parent="."]
+
+[node name="Level" type="Node" parent="Process"]
+script = ExtResource("2_d0qed")
+
+[node name="TestTimer" type="Timer" parent="Process"]
+wait_time = 3.0
+
+[node name="View" type="Node2D" parent="."]
+
+[node name="WorldCollider_Floor" type="StaticBody2D" parent="View"]
+position = Vector2(916, 1066)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="View/WorldCollider_Floor"]
+shape = SubResource("WorldBoundaryShape2D_4qb2k")
+
+[node name="Player" parent="View" instance=ExtResource("2_p3ut0")]
+
+[connection signal="timeout" from="Process/TestTimer" to="Process/Level" method="_on_test_timer_timeout"]

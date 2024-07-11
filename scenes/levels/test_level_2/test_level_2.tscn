@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bagrv80vxbeak"]
 
-[ext_resource type="Texture2D" uid="uid://wo5jymx1bhi0" path="res://scenes/objects/floor.png" id="1_fqm3u"]
-[ext_resource type="Texture2D" uid="uid://c6un28yetg271" path="res://scenes/entities/player/Character.png" id="4_b73ip"]
-[ext_resource type="Texture2D" uid="uid://iui5gjl2k4jg" path="res://scenes/objects/Pizza.png" id="5_g8qnh"]
+[ext_resource type="Texture2D" uid="uid://dvc3cg54yrlis" path="res://scenes/objects/floor.png" id="1_fqm3u"]
+[ext_resource type="Texture2D" uid="uid://tgjjcr6ly2a3" path="res://scenes/entities/player/Character.png" id="4_b73ip"]
+[ext_resource type="Texture2D" uid="uid://cv550o2bpkptg" path="res://scenes/objects/Pizza.png" id="5_g8qnh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjrsh"]
 size = Vector2(3841, 65.5)
