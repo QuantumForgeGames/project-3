@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd36fbnt00w6x"]
+[gd_scene load_steps=11 format=3 uid="uid://cd36fbnt00w6x"]
 
-[ext_resource type="Script" path="res://scenes/entities/player/movement.gd" id="1_0rjib"]
-[ext_resource type="Script" path="res://scenes/entities/player/player.gd" id="1_3a0mm"]
-[ext_resource type="Texture2D" uid="uid://tgjjcr6ly2a3" path="res://scenes/entities/player/Character.png" id="2_7odd2"]
-[ext_resource type="Script" path="res://scenes/entities/player/Collision.gd" id="2_50ek1"]
+[ext_resource type="Script" path="res://scenes/entities/player/scripts/player.gd" id="1_c7xkt"]
+[ext_resource type="Texture2D" uid="uid://c6un28yetg271" path="res://scenes/entities/player/Character.png" id="2_7odd2"]
+[ext_resource type="Script" path="res://scenes/entities/player/scripts/movement.gd" id="2_w42of"]
+[ext_resource type="Script" path="res://scenes/entities/player/scripts/collision.gd" id="3_d7uck"]
 [ext_resource type="Script" path="res://scripts/systems/basic_health.gd" id="4_0wo8a"]
+[ext_resource type="Script" path="res://scenes/entities/player/scripts/shooting.gd" id="5_cy16x"]
 [ext_resource type="PackedScene" uid="uid://b63an5xu4n3jf" path="res://scenes/systems/health.tscn" id="6_f0kxb"]
+[ext_resource type="PackedScene" uid="uid://bgaj8qr710x4h" path="res://scenes/entities/player/laser/laser.tscn" id="8_ukwji"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obvfc"]
 radius = 50.0
@@ -14,7 +16,7 @@ height = 190.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_wdyet"]
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_3a0mm")
+script = ExtResource("1_c7xkt")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_obvfc")
@@ -22,13 +24,16 @@ shape = SubResource("CapsuleShape2D_obvfc")
 [node name="process" type="Node" parent="."]
 
 [node name="Movement" type="Node" parent="process"]
-script = ExtResource("1_0rjib")
+script = ExtResource("2_w42of")
 
 [node name="Collision" type="Node" parent="process"]
-script = ExtResource("2_50ek1")
+script = ExtResource("3_d7uck")
 
 [node name="Health" type="Node" parent="process"]
 script = ExtResource("4_0wo8a")
+
+[node name="Shooting" type="Node" parent="process"]
+script = ExtResource("5_cy16x")
 
 [node name="view" type="Node2D" parent="."]
 
@@ -39,14 +44,12 @@ texture = ExtResource("2_7odd2")
 
 [node name="Health" parent="view" instance=ExtResource("6_f0kxb")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-visible = false
-enabled = false
+[node name="Laser" parent="view" instance=ExtResource("8_ukwji")]
 
-[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+[node name="Area2D" type="Area2D" parent="view" groups=["player"]]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="view/Area2D"]
 shape = SubResource("CircleShape2D_wdyet")
 
-[connection signal="area_entered" from="Area2D" to="process/Collision" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="view/Area2D" to="process/Collision" method="_on_area_2d_area_entered"]
