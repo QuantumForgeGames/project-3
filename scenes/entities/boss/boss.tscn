@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://1h4og74ox6c5"]
 
 [ext_resource type="Script" path="res://scenes/entities/boss/boss.gd" id="1_7wqi8"]
-[ext_resource type="Texture2D" uid="uid://b8gk2p6xxsbpf" path="res://scenes/entities/boss/boss_sprite_sheet.png" id="1_nhj6o"]
+[ext_resource type="Texture2D" uid="uid://rbxv0qwujuy" path="res://scenes/entities/boss/boss_sprite_sheet.png" id="1_nhj6o"]
 [ext_resource type="Script" path="res://scenes/entities/boss/FiniteStateMachine.gd" id="2_s8df8"]
 [ext_resource type="Script" path="res://scenes/entities/boss/Idle.gd" id="3_uje48"]
 [ext_resource type="Script" path="res://scenes/entities/boss/Shoot.gd" id="5_2v0re"]

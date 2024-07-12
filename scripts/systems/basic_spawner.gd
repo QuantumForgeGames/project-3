@@ -17,5 +17,6 @@ func _spawn () -> void:
 
     # var obstacles = owner.get_node("view/Obstacles")
     var obstacle = _object.instantiate()
+    obstacle._door_close_state = randi_range(0, 2)
     add_child(obstacle)
     obstacle.global_position = global_position

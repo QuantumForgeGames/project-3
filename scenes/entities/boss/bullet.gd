@@ -12,17 +12,17 @@ var velocity: Vector2 = Vector2.ZERO
 
 
 func _ready():
-	direction = (player.position - position).normalized()
+    direction = (player.position - position).normalized()
 
 
 func _physics_process(delta):
-	velocity = direction * speed
-	rotation = velocity.angle()
-	
-	velocity = velocity.limit_length(150)
-	
-	position += velocity
+    velocity = direction * speed
+    rotation = velocity.angle()
+    
+    velocity = velocity.limit_length(150)
+    
+    position += velocity
 
 
 func _on_body_entered(body):
-	queue_free()
+    queue_free()
