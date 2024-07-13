@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cd36fbnt00w6x"]
+[gd_scene load_steps=14 format=3 uid="uid://cd36fbnt00w6x"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/scripts/player.gd" id="1_c7xkt"]
 [ext_resource type="Texture2D" uid="uid://citj24h1lx5fx" path="res://scenes/entities/player/Character.png" id="2_7odd2"]
@@ -8,12 +8,50 @@
 [ext_resource type="Script" path="res://scenes/entities/player/scripts/shooting.gd" id="5_cy16x"]
 [ext_resource type="PackedScene" uid="uid://b63an5xu4n3jf" path="res://scenes/systems/health.tscn" id="6_f0kxb"]
 [ext_resource type="PackedScene" uid="uid://bgaj8qr710x4h" path="res://scenes/entities/player/laser/laser.tscn" id="8_ukwji"]
+[ext_resource type="PackedScene" uid="uid://buoufy1kqsjer" path="res://scenes/entities/player/jetpack/propulsion.tscn" id="9_j55bp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i18dh"]
 radius = 44.0
 height = 146.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_pj378"]
+resource_name = "blink"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("view/Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.117647), Color(1, 1, 1, 1), Color(1, 1, 1, 0.117647), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_36cuu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("view/Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_na4uf"]
+_data = {
+"RESET": SubResource("Animation_36cuu"),
+"blink": SubResource("Animation_pj378")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_c7xkt")
 
 [node name="process" type="Node" parent="."]
@@ -31,6 +69,8 @@ script = ExtResource("4_0wo8a")
 script = ExtResource("5_cy16x")
 
 [node name="view" type="Node2D" parent="."]
+
+[node name="Propulsion" parent="view" instance=ExtResource("9_j55bp")]
 
 [node name="Sprite" type="Sprite2D" parent="view"]
 position = Vector2(0, -6)
@@ -53,5 +93,10 @@ offset_left = 81.0
 offset_top = -119.0
 offset_right = 121.0
 offset_bottom = -96.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_na4uf")
+}
 
 [connection signal="area_entered" from="view/Area2D" to="process/Collision" method="_on_area_2d_area_entered"]

@@ -36,6 +36,12 @@ shape = SubResource("RectangleShape2D_jxf3h")
 texture = SubResource("PlaceholderTexture2D_so34e")
 offset = Vector2(0, -270)
 
+[node name="Area2D" type="Area2D" parent="view/Door_Top" groups=["door"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="view/Door_Top/Area2D"]
+position = Vector2(0, -270)
+shape = SubResource("RectangleShape2D_jxf3h")
+
 [node name="Door_Bottom" type="StaticBody2D" parent="view"]
 metadata/_edit_group_ = true
 
@@ -46,3 +52,9 @@ shape = SubResource("RectangleShape2D_voge4")
 [node name="Sprite" type="Sprite2D" parent="view/Door_Bottom"]
 texture = SubResource("PlaceholderTexture2D_s307k")
 offset = Vector2(0, 270)
+
+[node name="Area2D" type="Area2D" parent="view/Door_Bottom" groups=["door"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="view/Door_Bottom/Area2D"]
+position = Vector2(0, 270)
+shape = SubResource("RectangleShape2D_voge4")

@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://buoufy1kqsjer"]
+
+[ext_resource type="Texture2D" uid="uid://bb36yupfw8jnv" path="res://scenes/entities/player/jetpack/Particle_Effect_01.png" id="1_5krlj"]
+[ext_resource type="Texture2D" uid="uid://dh21i3r4bgksv" path="res://scenes/entities/player/jetpack/Particle_Effect_02.png" id="2_g36yg"]
+[ext_resource type="Texture2D" uid="uid://51h74t3m6w2j" path="res://scenes/entities/player/jetpack/Particle_Effect_03.png" id="3_ei8gb"]
+[ext_resource type="Texture2D" uid="uid://dtr352djva3nc" path="res://scenes/entities/player/jetpack/Particle_Effect_04.png" id="4_uihrq"]
+[ext_resource type="Texture2D" uid="uid://duhaj1nu3cf7t" path="res://scenes/entities/player/jetpack/Particle_Effect_05.png" id="5_35ml1"]
+[ext_resource type="Texture2D" uid="uid://bunwhsewuojc7" path="res://scenes/entities/player/jetpack/Particle_Effect_06.png" id="6_n27kt"]
+
+[sub_resource type="Curve" id="Curve_vkeiv"]
+_data = [Vector2(0, 0.509814), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Propulsion" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 16
+texture = ExtResource("1_5krlj")
+emission_shape = 1
+emission_sphere_radius = 25.0
+radial_accel_min = -50.0
+radial_accel_max = -40.0
+scale_amount_min = 0.1
+scale_amount_max = 0.75
+scale_amount_curve = SubResource("Curve_vkeiv")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+texture = ExtResource("2_g36yg")
+emission_shape = 1
+emission_sphere_radius = 25.0
+radial_accel_min = -50.0
+radial_accel_max = -40.0
+scale_amount_min = 0.2
+scale_amount_max = 0.75
+scale_amount_curve = SubResource("Curve_vkeiv")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+texture = ExtResource("3_ei8gb")
+emission_shape = 1
+emission_sphere_radius = 1.0
+radial_accel_min = -50.0
+radial_accel_max = -40.0
+scale_amount_min = 0.2
+scale_amount_max = 0.75
+scale_amount_curve = SubResource("Curve_vkeiv")
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="."]
+texture = ExtResource("4_uihrq")
+emission_shape = 1
+emission_sphere_radius = 25.0
+radial_accel_min = -50.0
+radial_accel_max = -40.0
+scale_amount_min = 0.2
+scale_amount_max = 0.75
+scale_amount_curve = SubResource("Curve_vkeiv")
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="."]
+texture = ExtResource("5_35ml1")
+emission_shape = 1
+emission_sphere_radius = 25.0
+radial_accel_min = -50.0
+radial_accel_max = -50.0
+scale_amount_min = 0.2
+scale_amount_max = 0.75
+scale_amount_curve = SubResource("Curve_vkeiv")
+
+[node name="CPUParticles2D6" type="CPUParticles2D" parent="."]
+texture = ExtResource("6_n27kt")
+emission_shape = 1
+emission_sphere_radius = 25.0
+radial_accel_min = -50.0
+radial_accel_max = -40.0
+scale_amount_min = 0.2
+scale_amount_max = 0.75
+scale_amount_curve = SubResource("Curve_vkeiv")
