@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0rb23dvslh8"]
+[gd_scene load_steps=4 format=3 uid="uid://c0rb23dvslh8"]
 
 [ext_resource type="PackedScene" uid="uid://1h4og74ox6c5" path="res://scenes/entities/boss/boss.tscn" id="1_h0fjt"]
 [ext_resource type="PackedScene" uid="uid://cd36fbnt00w6x" path="res://scenes/entities/player/player.tscn" id="2_nk8ew"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ftda2"]
 
 [node name="BossRoom" type="Node2D"]
 
@@ -11,3 +13,10 @@
 position = Vector2(1550, 742)
 
 [node name="Player" parent="View" instance=ExtResource("2_nk8ew")]
+position = Vector2(101, 509)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="View"]
+position = Vector2(0, 1080)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="View/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_ftda2")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cd36fbnt00w6x"]
+[gd_scene load_steps=10 format=3 uid="uid://cd36fbnt00w6x"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/scripts/player.gd" id="1_c7xkt"]
-[ext_resource type="Texture2D" uid="uid://c6un28yetg271" path="res://scenes/entities/player/Character.png" id="2_7odd2"]
+[ext_resource type="Texture2D" uid="uid://citj24h1lx5fx" path="res://scenes/entities/player/Character.png" id="2_7odd2"]
 [ext_resource type="Script" path="res://scenes/entities/player/scripts/movement.gd" id="2_w42of"]
 [ext_resource type="Script" path="res://scenes/entities/player/scripts/collision.gd" id="3_d7uck"]
 [ext_resource type="Script" path="res://scripts/systems/basic_health.gd" id="4_0wo8a"]
@@ -9,17 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://b63an5xu4n3jf" path="res://scenes/systems/health.tscn" id="6_f0kxb"]
 [ext_resource type="PackedScene" uid="uid://bgaj8qr710x4h" path="res://scenes/entities/player/laser/laser.tscn" id="8_ukwji"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obvfc"]
-radius = 50.0
-height = 190.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_wdyet"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i18dh"]
+radius = 44.0
+height = 146.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_c7xkt")
-
-[node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_obvfc")
 
 [node name="process" type="Node" parent="."]
 
@@ -38,8 +33,7 @@ script = ExtResource("5_cy16x")
 [node name="view" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite2D" parent="view"]
-position = Vector2(0, -21)
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, -6)
 texture = ExtResource("2_7odd2")
 
 [node name="Health" parent="view" instance=ExtResource("6_f0kxb")]
@@ -47,9 +41,17 @@ texture = ExtResource("2_7odd2")
 [node name="Laser" parent="view" instance=ExtResource("8_ukwji")]
 
 [node name="Area2D" type="Area2D" parent="view" groups=["player"]]
-visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="view/Area2D"]
-shape = SubResource("CircleShape2D_wdyet")
+[node name="Collision" type="CollisionShape2D" parent="view/Area2D"]
+shape = SubResource("CapsuleShape2D_i18dh")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_i18dh")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 81.0
+offset_top = -119.0
+offset_right = 121.0
+offset_bottom = -96.0
 
 [connection signal="area_entered" from="view/Area2D" to="process/Collision" method="_on_area_2d_area_entered"]
