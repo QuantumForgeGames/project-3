@@ -79,6 +79,7 @@ texture = ExtResource("2_7odd2")
 [node name="Health" parent="view" instance=ExtResource("6_f0kxb")]
 
 [node name="Laser" parent="view" instance=ExtResource("8_ukwji")]
+position = Vector2(59, 0)
 
 [node name="Area2D" type="Area2D" parent="view" groups=["player"]]
 

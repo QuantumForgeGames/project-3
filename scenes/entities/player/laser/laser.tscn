@@ -1,8 +1,217 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgaj8qr710x4h"]
+[gd_scene load_steps=23 format=3 uid="uid://bgaj8qr710x4h"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/laser/laser.gd" id="1_66fgv"]
+[ext_resource type="Texture2D" uid="uid://boslj67c630xa" path="res://scenes/entities/player/laser/beam_sprite.png" id="2_olapc"]
+[ext_resource type="Texture2D" uid="uid://8pijn40dk7bo" path="res://scenes/entities/player/laser/orb_sprite_03.png" id="4_2vpx6"]
+[ext_resource type="Texture2D" uid="uid://mp10xpxuxyqq" path="res://scenes/entities/player/laser/test.tres" id="4_kd2lo"]
+[ext_resource type="Texture2D" uid="uid://byll47ej1cj0n" path="res://scenes/entities/player/laser/orb_sprite_01.png" id="5_l3vc2"]
+[ext_resource type="Texture2D" uid="uid://bhp0l07rc0xl1" path="res://scenes/entities/player/laser/orb_sprite_04.png" id="5_y2cu5"]
+[ext_resource type="Texture2D" uid="uid://bci4a2j5oxg34" path="res://scenes/entities/player/laser/orb_sprite_02.png" id="6_e4dkk"]
+[ext_resource type="Texture2D" uid="uid://bo678lwcyh05m" path="res://scenes/entities/player/laser/ring_frame_01.png" id="7_x6csq"]
+[ext_resource type="Texture2D" uid="uid://birh8qtq4fk3l" path="res://scenes/entities/player/laser/ring_frame_02.png" id="8_1im6c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o0tpe"]
+
+[sub_resource type="Animation" id="Animation_pcp34"]
+resource_name = "shoot"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 4, 6]
+}
+
+[sub_resource type="Animation" id="Animation_g6fkm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OrbSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RingSprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RingSprite2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2413c"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OrbSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RingSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RingSprite2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qw4n7"]
+_data = {
+"RESET": SubResource("Animation_g6fkm"),
+"fade_in": SubResource("Animation_2413c"),
+"shoot": SubResource("Animation_pcp34")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjenv"]
+atlas = ExtResource("4_2vpx6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wtcy"]
+atlas = ExtResource("5_y2cu5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hr4t1"]
+atlas = ExtResource("5_l3vc2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n5ej"]
+atlas = ExtResource("6_e4dkk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ao7t4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjenv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wtcy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hr4t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n5ej")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s1f6"]
+atlas = ExtResource("7_x6csq")
+region = Rect2(0, 0, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gd6q"]
+atlas = ExtResource("8_1im6c")
+region = Rect2(0, 0, 32, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_natbq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s1f6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gd6q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Laser" type="Node2D"]
 script = ExtResource("1_66fgv")
@@ -12,3 +221,50 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_o0tpe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qw4n7")
+}
+autoplay = "shoot"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("2_olapc")
+offset = Vector2(224.365, 0)
+hframes = 2
+vframes = 4
+frame = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+position = Vector2(31, 1)
+points = PackedVector2Array(0, 0, 100, 0)
+width = 64.0
+texture = ExtResource("4_kd2lo")
+texture_mode = 1
+
+[node name="OrbSprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_ao7t4")
+autoplay = "default"
+speed_scale = 10.0
+
+[node name="RingSprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(40, 1)
+sprite_frames = SubResource("SpriteFrames_natbq")
+autoplay = "default"
+frame_progress = 0.544166
+speed_scale = 10.0
+
+[node name="RingSprite2" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(81, 1)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_natbq")
+autoplay = "default"
+frame_progress = 0.544166
+speed_scale = 10.0
