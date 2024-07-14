@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://yl6w74en5kkn"]
+[gd_scene load_steps=9 format=3 uid="uid://yl6w74en5kkn"]
 
 [ext_resource type="Script" path="res://scenes/objects/blast_doors/blast_doors.gd" id="1_okget"]
 [ext_resource type="Script" path="res://scenes/objects/blast_doors/movement.gd" id="2_klw27"]
+[ext_resource type="Script" path="res://scripts/systems/basic_health.gd" id="3_h7yoj"]
+[ext_resource type="Script" path="res://scenes/objects/blast_doors/collision.gd" id="4_fwbli"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jxf3h"]
 size = Vector2(60, 540)
@@ -22,6 +24,17 @@ script = ExtResource("1_okget")
 
 [node name="Movement" type="Node" parent="process"]
 script = ExtResource("2_klw27")
+
+[node name="Health_Top" type="Node" parent="process" node_paths=PackedStringArray("_owner")]
+script = ExtResource("3_h7yoj")
+_owner = NodePath("../../view/Door_Top")
+
+[node name="Health_Bottom" type="Node" parent="process" node_paths=PackedStringArray("_owner")]
+script = ExtResource("3_h7yoj")
+_owner = NodePath("../../view/Door_Bottom")
+
+[node name="Collision" type="Node" parent="process"]
+script = ExtResource("4_fwbli")
 
 [node name="view" type="Node2D" parent="."]
 
@@ -58,3 +71,8 @@ offset = Vector2(0, 270)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="view/Door_Bottom/Area2D"]
 position = Vector2(0, 270)
 shape = SubResource("RectangleShape2D_voge4")
+
+[connection signal="area_entered" from="view/Door_Top/Area2D" to="process/Collision" method="_on_area_2d1_area_entered"]
+[connection signal="area_exited" from="view/Door_Top/Area2D" to="process/Collision" method="_on_area_2d1_area_exited"]
+[connection signal="area_entered" from="view/Door_Bottom/Area2D" to="process/Collision" method="_on_area_2d2_area_entered"]
+[connection signal="area_exited" from="view/Door_Bottom/Area2D" to="process/Collision" method="_on_area_2d2_area_exited"]
