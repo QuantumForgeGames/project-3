@@ -5,7 +5,7 @@ resource_name = "Health"
 script/source = "extends Node2D
 
 func handle_update (value_ :float) -> void:
-	get_child(0).value = value_
+    get_child(0).value = value_
 "
 
 [node name="Health" type="Node2D"]
