@@ -62,8 +62,9 @@ script = ExtResource("2_w42of")
 [node name="Collision" type="Node" parent="process"]
 script = ExtResource("3_d7uck")
 
-[node name="Health" type="Node" parent="process"]
+[node name="Health" type="Node" parent="process" node_paths=PackedStringArray("_owner")]
 script = ExtResource("4_0wo8a")
+_owner = NodePath("../..")
 
 [node name="Shooting" type="Node" parent="process"]
 script = ExtResource("5_cy16x")

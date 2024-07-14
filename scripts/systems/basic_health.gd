@@ -9,6 +9,7 @@ signal update(health :float)
 const MAX_HEALTH = 100.0
 
 @export var _health :float = 100.0
+@export var _owner :Node = null
 
 
 func _ready():
@@ -20,7 +21,7 @@ func take_damage (damage_ :float) -> void:
 	_health -= damage_
 	if _health <= 0.0:
 		died.emit()
-		owner.queue_free()
+		_owner.queue_free()
 		return
 	update.emit(_health)
 
