@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://1h4og74ox6c5"]
 
 [ext_resource type="Script" path="res://scenes/entities/boss/boss.gd" id="1_7wqi8"]
-[ext_resource type="Texture2D" uid="uid://beo6go6q0l60y" path="res://scenes/entities/boss/Boss.png" id="2_e7b60"]
+[ext_resource type="Texture2D" uid="uid://8lvkpffrmuqs" path="res://scenes/entities/boss/Boss.png" id="2_e7b60"]
 [ext_resource type="Script" path="res://scenes/entities/boss/FiniteStateMachine.gd" id="2_s8df8"]
 [ext_resource type="Script" path="res://scenes/entities/boss/Idle.gd" id="3_uje48"]
 [ext_resource type="Script" path="res://scenes/entities/boss/Shoot.gd" id="5_2v0re"]
@@ -193,6 +193,9 @@ text = "Debug"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bi45e")
+
 [node name="PlayerDetection" type="Area2D" parent="."]
 position = Vector2(0, -2)
 collision_layer = 0
@@ -246,6 +249,9 @@ one_shot = true
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("_owner")]
 script = ExtResource("9_bouv8")
 _owner = NodePath("..")
+
+[node name="BulletPosition" type="Node2D" parent="."]
+position = Vector2(-137, -140)
 
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
 [connection signal="area_entered" from="DamageDetection" to="." method="_on_damage_detection_area_entered"]
