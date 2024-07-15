@@ -1,13 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://1h4og74ox6c5"]
+[gd_scene load_steps=20 format=3 uid="uid://1h4og74ox6c5"]
 
 [ext_resource type="Script" path="res://scenes/entities/boss/boss.gd" id="1_7wqi8"]
-[ext_resource type="Texture2D" uid="uid://8lvkpffrmuqs" path="res://scenes/entities/boss/Boss.png" id="2_e7b60"]
+[ext_resource type="Texture2D" uid="uid://beo6go6q0l60y" path="res://scenes/entities/boss/Boss.png" id="2_e7b60"]
 [ext_resource type="Script" path="res://scenes/entities/boss/FiniteStateMachine.gd" id="2_s8df8"]
 [ext_resource type="Script" path="res://scenes/entities/boss/Idle.gd" id="3_uje48"]
 [ext_resource type="Script" path="res://scenes/entities/boss/Shoot.gd" id="5_2v0re"]
 [ext_resource type="PackedScene" uid="uid://1dm8mitdwjgo" path="res://scenes/entities/boss/bullet.tscn" id="6_58deo"]
 [ext_resource type="Script" path="res://scenes/entities/boss/Dash.gd" id="6_e72ym"]
 [ext_resource type="Script" path="res://scenes/entities/boss/Move.gd" id="7_a8hum"]
+[ext_resource type="Script" path="res://scripts/systems/basic_health.gd" id="9_bouv8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bi45e"]
+radius = 70.0
+height = 242.0
 
 [sub_resource type="Animation" id="Animation_n8glk"]
 length = 0.001
@@ -98,12 +103,19 @@ _data = {
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4qok"]
 bg_color = Color(0.992628, 0.342509, 0.362941, 1)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bi45e"]
-radius = 70.0
-height = 242.0
+[sub_resource type="GDScript" id="GDScript_py1um"]
+resource_name = "HealthBar"
+script/source = "extends ProgressBar
+
+func handle_update (value_) -> void:
+    value = value_
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kyqj1"]
 radius = 451.004
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0l3pi"]
+radius = 170.857
 
 [node name="Boss" type="CharacterBody2D"]
 collision_layer = 2
@@ -113,6 +125,9 @@ script = ExtResource("1_7wqi8")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_e7b60")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bi45e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -137,6 +152,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/fill = SubResource("StyleBoxFlat_w4qok")
 value = 29.26
+script = SubResource("GDScript_py1um")
 
 [node name="Label" type="Label" parent="UI/ProgressBar"]
 layout_mode = 0
@@ -177,15 +193,19 @@ text = "Debug"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_bi45e")
-
 [node name="PlayerDetection" type="Area2D" parent="."]
 position = Vector2(0, -2)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_kyqj1")
+
+[node name="DamageDetection" type="Area2D" parent="."]
+position = Vector2(0, -2)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageDetection"]
+shape = SubResource("CircleShape2D_0l3pi")
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
 script = ExtResource("2_s8df8")
@@ -223,7 +243,13 @@ autostart = true
 wait_time = 5.0
 one_shot = true
 
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("_owner")]
+script = ExtResource("9_bouv8")
+_owner = NodePath("..")
+
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
+[connection signal="area_entered" from="DamageDetection" to="." method="_on_damage_detection_area_entered"]
+[connection signal="area_exited" from="DamageDetection" to="." method="_on_damage_detection_area_exited"]
 [connection signal="timeout" from="ShootTimer" to="FiniteStateMachine/Idle" method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="FiniteStateMachine/Idle" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="CooldownTimer" to="FiniteStateMachine/Idle" method="_on_cooldown_timer_timeout"]

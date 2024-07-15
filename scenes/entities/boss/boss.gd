@@ -12,10 +12,21 @@ const DASH_START_POSITION: int = 1550
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var health: int = 100
 
+@onready var _health :Node = $'Health'
+var _process_damages: Array = []
 
-func _physics_process(delta):
+
+func _ready () -> void:
+    _health.update.connect($'UI/ProgressBar'.handle_update)
     progress_bar.value = health
-    health -= 1
+
+
+func _process (delta_) -> void:
+    for node in _process_damages:
+        node.take_damage(delta_ * 40.0)
+
+
+func _physics_process (_delta) -> void:
     pass
     # Add the gravity.
     #if not is_on_floor():
@@ -34,3 +45,12 @@ func _physics_process(delta):
         #velocity.x = move_toward(velocity.x, 0, SPEED)
 
     #move_and_slide()
+
+
+func _on_damage_detection_area_entered (_marea) -> void:
+    if not _process_damages.has(_health):
+        _process_damages.append(_health)
+
+func _on_damage_detection_area_exited (_area) -> void:
+    if _process_damages.has(_health):
+        _process_damages.erase(_health)
