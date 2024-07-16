@@ -38,3 +38,8 @@ func _ready () -> void:
         AudioManager.play_stream_oneshot(AudioManager.audio_vines_moving.pick_random())
         AudioManager.play_stream_oneshot(AudioManager.audio_vines_moving.pick_random())
     )
+
+
+func _notification(_what :int) -> void:
+    if _what == NOTIFICATION_PREDELETE:
+        AudioManager.play_stream_oneshot(AudioManager.audio_vines_breaking.pick_random())

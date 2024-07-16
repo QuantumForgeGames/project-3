@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://yl6w74en5kkn"]
+[gd_scene load_steps=10 format=3 uid="uid://yl6w74en5kkn"]
 
 [ext_resource type="Script" path="res://scenes/objects/blast_doors/blast_doors.gd" id="1_okget"]
 [ext_resource type="Script" path="res://scenes/objects/blast_doors/movement.gd" id="2_klw27"]
@@ -6,8 +6,27 @@
 [ext_resource type="Script" path="res://scenes/objects/blast_doors/collision.gd" id="4_fwbli"]
 [ext_resource type="Texture2D" uid="uid://djjn82nyijagk" path="res://assets/images/Vine.png" id="5_oxbfq"]
 
+[sub_resource type="GDScript" id="GDScript_isg1n"]
+resource_name = "Door_Destroy"
+script/source = "extends StaticBody2D
+
+
+func _notification(_what :int) -> void:
+    if _what == NOTIFICATION_PREDELETE:
+        AudioManager.play_stream_oneshot(AudioManager.audio_vines_breaking.pick_random())
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jxf3h"]
 size = Vector2(60, 540)
+
+[sub_resource type="GDScript" id="GDScript_u32u5"]
+resource_name = "Door_Destroy"
+script/source = "extends StaticBody2D
+
+func _notification(_what :int) -> void:
+    if _what == NOTIFICATION_PREDELETE:
+        AudioManager.play_stream_oneshot(AudioManager.audio_vines_breaking.pick_random())
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_voge4"]
 size = Vector2(60, 540)
@@ -34,6 +53,7 @@ script = ExtResource("4_fwbli")
 [node name="view" type="Node2D" parent="."]
 
 [node name="Door_Top" type="StaticBody2D" parent="view"]
+script = SubResource("GDScript_isg1n")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="view/Door_Top"]
@@ -55,6 +75,7 @@ position = Vector2(0, -270)
 shape = SubResource("RectangleShape2D_jxf3h")
 
 [node name="Door_Bottom" type="StaticBody2D" parent="view"]
+script = SubResource("GDScript_u32u5")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="view/Door_Bottom"]
