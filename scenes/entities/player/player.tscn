@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://cd36fbnt00w6x"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/scripts/player.gd" id="1_c7xkt"]
-[ext_resource type="Texture2D" uid="uid://citj24h1lx5fx" path="res://scenes/entities/player/Character.png" id="2_7odd2"]
+[ext_resource type="Texture2D" uid="uid://c6un28yetg271" path="res://scenes/entities/player/Character.png" id="2_7odd2"]
 [ext_resource type="Script" path="res://scenes/entities/player/scripts/movement.gd" id="2_w42of"]
 [ext_resource type="Script" path="res://scenes/entities/player/scripts/collision.gd" id="3_d7uck"]
 [ext_resource type="Script" path="res://scripts/systems/basic_health.gd" id="4_0wo8a"]
@@ -78,6 +78,9 @@ position = Vector2(0, -6)
 texture = ExtResource("2_7odd2")
 
 [node name="Health" parent="view" instance=ExtResource("6_f0kxb")]
+
+[node name="Overheat" parent="view" instance=ExtResource("6_f0kxb")]
+position = Vector2(-2, 92)
 
 [node name="Laser" parent="view" instance=ExtResource("8_ukwji")]
 position = Vector2(59, 0)
