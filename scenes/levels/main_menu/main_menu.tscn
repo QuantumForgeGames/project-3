@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4k5vp15vukdy"]
+[gd_scene load_steps=11 format=3 uid="uid://c4k5vp15vukdy"]
 
 [ext_resource type="Script" path="res://scenes/levels/main_menu/main_menu.gd" id="1_anatk"]
+[ext_resource type="Texture2D" uid="uid://dgbtc2gtwsuh0" path="res://scenes/levels/main_menu/MainMenu_Background.png" id="2_btojt"]
+[ext_resource type="Texture2D" uid="uid://0mhyvi8mrkec" path="res://scenes/levels/main_menu/MainMenu_Doors.png" id="3_4yocv"]
+[ext_resource type="Texture2D" uid="uid://dyklclcel15f3" path="res://scenes/levels/main_menu/MainMenu_Menu_Panel.png" id="3_mqlcs"]
+[ext_resource type="Texture2D" uid="uid://67w5r66c1pqv" path="res://scenes/levels/main_menu/MainMenu_Light.png" id="3_ou5wf"]
+[ext_resource type="Texture2D" uid="uid://x2eadehuop5g" path="res://scenes/levels/main_menu/MainMenu_Button_Normal.png" id="4_cwiie"]
+[ext_resource type="Texture2D" uid="uid://d0gm4wgs15cat" path="res://scenes/levels/main_menu/MainMenu_Fog.png" id="4_xqa3o"]
+[ext_resource type="Texture2D" uid="uid://drm0044rcy7hf" path="res://scenes/levels/main_menu/MainMenu_Button_Hovered.png" id="5_772l6"]
+[ext_resource type="Texture2D" uid="uid://dsbh8cwyhnvbn" path="res://scenes/levels/main_menu/MainMenu_Panel_Two.png" id="8_md05w"]
+[ext_resource type="Texture2D" uid="uid://dcxhawm7tqju6" path="res://scenes/levels/main_menu/MainMenu_Not_Enough.png" id="9_64foa"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +19,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_anatk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_btojt")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -46,6 +64,111 @@ popup/item_3/id = 3
 [node name="SettingsButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 text = "Prototype 2"
+
+[node name="Light" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.5
+offset_top = -423.0
+offset_right = 362.5
+offset_bottom = 293.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ou5wf")
+
+[node name="Doors" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -460.0
+offset_top = -368.0
+offset_right = 460.0
+offset_bottom = 283.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4yocv")
+
+[node name="Fog" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -858.0
+offset_top = -573.0
+offset_right = 858.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_xqa3o")
+
+[node name="PanelTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -372.0
+offset_top = -270.0
+offset_right = 374.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_mqlcs")
+
+[node name="PlayButton" type="TextureButton" parent="PanelTexture"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -149.0
+offset_top = -128.0
+offset_right = 147.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("4_cwiie")
+texture_hover = ExtResource("5_772l6")
+
+[node name="Label" type="Label" parent="PanelTexture/PlayButton"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 10.0
+offset_right = 154.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0.996078, 0.705882, 0, 1)
+text = "PLAY"
+
+[node name="Panel2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -866.0
+offset_right = 1044.0
+grow_vertical = 0
+texture = ExtResource("8_md05w")
+
+[node name="HiddenText" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -438.0
+offset_right = 614.0
+grow_vertical = 0
+texture = ExtResource("9_64foa")
 
 [connection signal="pressed" from="HBoxContainer/OpenButton" to="." method="_on_open_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
