@@ -1,0 +1,42 @@
+[gd_scene load_steps=20 format=3 uid="uid://bnpcxbmw6v6mx"]
+
+[ext_resource type="Script" path="res://scenes/auto/audio_manager/audio_manager.gd" id="1_h7maf"]
+[ext_resource type="AudioStream" uid="uid://bs43hkh0t67ce" path="res://assets/audio/sx_mechjam_int_vinebreaking1.wav" id="2_j61ki"]
+[ext_resource type="AudioStream" uid="uid://xugwxrjja2sj" path="res://assets/audio/sx_mechjam_int_vinebreaking2.wav" id="3_l8lq0"]
+[ext_resource type="AudioStream" uid="uid://dc86mrx8s024n" path="res://assets/audio/sx_mechjam_int_vinebreaking3.wav" id="4_w7537"]
+[ext_resource type="AudioStream" uid="uid://btp0swq3id0io" path="res://assets/audio/sx_mechjam_int_vinebreaking4.wav" id="5_63hcu"]
+[ext_resource type="AudioStream" uid="uid://bf0q0gl6kalmh" path="res://assets/audio/sx_mechjam_int_vinemoving1.wav" id="6_jttus"]
+[ext_resource type="AudioStream" uid="uid://c1djj588gyj6j" path="res://assets/audio/sx_mechjam_int_vinemoving2.wav" id="7_ksdxy"]
+[ext_resource type="AudioStream" uid="uid://d04totsl3tdst" path="res://assets/audio/sx_mechjam_int_vinemoving3.wav" id="8_cnaw8"]
+[ext_resource type="AudioStream" uid="uid://b1ec4bap1o4jm" path="res://assets/audio/sx_mechjam_int_vinemoving4.wav" id="9_cdtn4"]
+[ext_resource type="AudioStream" uid="uid://drcny4hg6clw" path="res://assets/audio/sx_mechjam_int_vinemoving5.wav" id="10_36axy"]
+[ext_resource type="AudioStream" uid="uid://bsakueneil51q" path="res://assets/audio/sx_mechjam_plr_jetpackfireinitial.wav" id="11_1rall"]
+[ext_resource type="AudioStream" uid="uid://bl4nlw42h0d8o" path="res://assets/audio/sx_mechjam_plr_jetpackfireloop.wav" id="12_s4voa"]
+[ext_resource type="AudioStream" uid="uid://cwwlqgllp7w3t" path="res://assets/audio/sx_mechjam_plr_jetpackoutoffuel.wav" id="13_0avp3"]
+[ext_resource type="AudioStream" uid="uid://byose1ht5ceqe" path="res://assets/audio/sx_mechjam_plr_laserfireinitial.wav" id="14_ib6n8"]
+[ext_resource type="AudioStream" uid="uid://dnp0f1uew4ooj" path="res://assets/audio/sx_mechjam_plr_laserfireloop.wav" id="15_mi5i7"]
+[ext_resource type="AudioStream" uid="uid://c5q1q2o2jgoi4" path="res://assets/audio/sx_mechjam_plr_laseroverheat.wav" id="16_30f88"]
+[ext_resource type="AudioStream" uid="uid://bawdue8b8kotk" path="res://assets/audio/sx_mechjam_plr_laserready.wav" id="17_j3unp"]
+[ext_resource type="AudioStream" uid="uid://b6q1eyqrs1rjy" path="res://assets/audio/sx_mechjam_plr_playerdeath.wav" id="18_48nbs"]
+[ext_resource type="AudioStream" uid="uid://c6cttuq1nb1yn" path="res://assets/audio/sx_mechjam_env_ambientloop.wav" id="19_6q1gk"]
+
+[node name="AudioManager" type="Node2D" node_paths=PackedStringArray("_AudioSpawner", "_BackgroundMusic")]
+process_mode = 3
+script = ExtResource("1_h7maf")
+_AudioSpawner = NodePath("AudioSpawner")
+_BackgroundMusic = NodePath("BackgroundMusic")
+audio_vines_breaking = Array[AudioStreamWAV]([ExtResource("2_j61ki"), ExtResource("3_l8lq0"), ExtResource("4_w7537"), ExtResource("5_63hcu")])
+audio_vines_moving = Array[AudioStreamWAV]([ExtResource("6_jttus"), ExtResource("7_ksdxy"), ExtResource("8_cnaw8"), ExtResource("9_cdtn4"), ExtResource("10_36axy")])
+audio_jetpack_fire_initial = ExtResource("11_1rall")
+audio_jetpack_fire_loop = ExtResource("12_s4voa")
+audio_jetpack_out_of_fuel = ExtResource("13_0avp3")
+audio_laser_fire_initial = ExtResource("14_ib6n8")
+audio_laser_fire_loop = ExtResource("15_mi5i7")
+audio_laser_overheat = ExtResource("16_30f88")
+audio_laser_ready = ExtResource("17_j3unp")
+audio_player_death = ExtResource("18_48nbs")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_6q1gk")
+
+[node name="AudioSpawner" type="Node" parent="."]

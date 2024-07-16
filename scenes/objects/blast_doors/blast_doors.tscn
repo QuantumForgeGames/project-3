@@ -1,20 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://yl6w74en5kkn"]
+[gd_scene load_steps=8 format=3 uid="uid://yl6w74en5kkn"]
 
 [ext_resource type="Script" path="res://scenes/objects/blast_doors/blast_doors.gd" id="1_okget"]
 [ext_resource type="Script" path="res://scenes/objects/blast_doors/movement.gd" id="2_klw27"]
 [ext_resource type="Script" path="res://scripts/systems/basic_health.gd" id="3_h7yoj"]
 [ext_resource type="Script" path="res://scenes/objects/blast_doors/collision.gd" id="4_fwbli"]
+[ext_resource type="Texture2D" uid="uid://djjn82nyijagk" path="res://assets/images/Vine.png" id="5_oxbfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jxf3h"]
 size = Vector2(60, 540)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_so34e"]
-size = Vector2(60, 540)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_voge4"]
-size = Vector2(60, 540)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s307k"]
 size = Vector2(60, 540)
 
 [node name="BlastDoors" type="Node2D"]
@@ -46,8 +41,12 @@ position = Vector2(0, -270)
 shape = SubResource("RectangleShape2D_jxf3h")
 
 [node name="Sprite" type="Sprite2D" parent="view/Door_Top"]
-texture = SubResource("PlaceholderTexture2D_so34e")
+position = Vector2(155, -114.859)
+scale = Vector2(0.311198, 0.533507)
+texture = ExtResource("5_oxbfq")
 offset = Vector2(0, -270)
+flip_h = true
+flip_v = true
 
 [node name="Area2D" type="Area2D" parent="view/Door_Top" groups=["door"]]
 
@@ -63,7 +62,9 @@ position = Vector2(0, 270)
 shape = SubResource("RectangleShape2D_voge4")
 
 [node name="Sprite" type="Sprite2D" parent="view/Door_Bottom"]
-texture = SubResource("PlaceholderTexture2D_s307k")
+position = Vector2(-148, 124.25)
+scale = Vector2(0.304948, 0.519444)
+texture = ExtResource("5_oxbfq")
 offset = Vector2(0, 270)
 
 [node name="Area2D" type="Area2D" parent="view/Door_Bottom" groups=["door"]]
