@@ -57,9 +57,7 @@ func change_scene(scene_ :PackedScene) -> void:
         current_level_instance.queue_free()
     current_level_instance = scene_.instantiate()
     get_tree().root.add_child(current_level_instance)
-    if current_level_instance.is_node_ready():
-        print('new scene is ready')
-    print("Level loaded")
+
     GameManager.sync_data.emit(false)
     # if current_level_instance != null:
     #     current_level_instance.queue_free()

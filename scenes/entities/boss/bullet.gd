@@ -13,15 +13,17 @@ var velocity: Vector2 = Vector2.ZERO
 
 
 func _ready():
-    direction = (player.position - position).normalized()
+    if player != null:
+        direction = (player.position - position).normalized()
+    else: direction = Vector2.LEFT
 
 
 func _physics_process(delta):
     velocity = direction * speed
     rotation = velocity.angle()
-    
+
     velocity = velocity.limit_length(150)
-    
+
     position += velocity
 
 
