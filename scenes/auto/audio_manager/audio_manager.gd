@@ -4,7 +4,9 @@ extends Node2D
 @export var _AudioSpawner :Node
 
 @export_group("background")
-@export var _BackgroundMusic :AudioStreamPlayer
+@export var _LevelMusic :AudioStreamPlayer
+@export var _MenuMusic :AudioStreamPlayer
+@export var _AmbientSound :AudioStreamPlayer
 
 @export_group("vines")
 @export var audio_vines_breaking :Array[AudioStreamWAV] = []
@@ -26,7 +28,8 @@ extends Node2D
 
 
 func _ready () -> void:
-    _BackgroundMusic.play()
+    _MenuMusic.play()
+    _AmbientSound.play()
 
 
 func play_stream_oneshot (stream :AudioStream) -> AudioStreamPlayer:
@@ -51,3 +54,11 @@ func clean_up_audio_players () -> void:
     for child in _AudioSpawner.get_children():
         child.queue_free()
 
+
+func toggle_music () -> void:
+    if _LevelMusic.playing:
+        _LevelMusic.stop()
+        _MenuMusic.play(0.0)
+    else:
+        _MenuMusic.stop()
+        _LevelMusic.play(0.0)

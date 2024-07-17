@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://1dm8mitdwjgo"]
 
-[ext_resource type="Script" path="res://scenes/entities/boss/bullet.gd" id="1_el404"]
-[ext_resource type="Texture2D" uid="uid://nttbws83sees" path="res://scenes/entities/boss/bullet_gun.png" id="2_fixlj"]
+[ext_resource type="Script" path="res://scenes/entities/boss/scripts/bullet.gd" id="1_el404"]
+[ext_resource type="Texture2D" uid="uid://bk6yngpbchgjf" path="res://scenes/entities/boss/assets/bullet_gun.png" id="2_fixlj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lurk2"]
 radius = 11.0

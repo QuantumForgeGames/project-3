@@ -1,13 +1,13 @@
 [gd_scene load_steps=20 format=3 uid="uid://1h4og74ox6c5"]
 
-[ext_resource type="Script" path="res://scenes/entities/boss/boss.gd" id="1_7wqi8"]
-[ext_resource type="Texture2D" uid="uid://8lvkpffrmuqs" path="res://scenes/entities/boss/Boss.png" id="2_e7b60"]
-[ext_resource type="Script" path="res://scenes/entities/boss/FiniteStateMachine.gd" id="2_s8df8"]
-[ext_resource type="Script" path="res://scenes/entities/boss/Idle.gd" id="3_uje48"]
-[ext_resource type="Script" path="res://scenes/entities/boss/Shoot.gd" id="5_2v0re"]
+[ext_resource type="Script" path="res://scenes/entities/boss/scripts/boss.gd" id="1_7tplj"]
+[ext_resource type="Texture2D" uid="uid://beo6go6q0l60y" path="res://scenes/entities/boss/assets/Boss.png" id="2_xpor1"]
+[ext_resource type="Script" path="res://scenes/entities/boss/scripts/FiniteStateMachine.gd" id="3_kcowh"]
+[ext_resource type="Script" path="res://scenes/entities/boss/scripts/Idle.gd" id="4_cktc5"]
+[ext_resource type="Script" path="res://scenes/entities/boss/scripts/Shoot.gd" id="5_8b8a0"]
 [ext_resource type="PackedScene" uid="uid://1dm8mitdwjgo" path="res://scenes/entities/boss/bullet.tscn" id="6_58deo"]
-[ext_resource type="Script" path="res://scenes/entities/boss/Dash.gd" id="6_e72ym"]
-[ext_resource type="Script" path="res://scenes/entities/boss/Move.gd" id="7_a8hum"]
+[ext_resource type="Script" path="res://scenes/entities/boss/scripts/Dash.gd" id="7_0uxuc"]
+[ext_resource type="Script" path="res://scenes/entities/boss/scripts/Move.gd" id="8_jwjaa"]
 [ext_resource type="Script" path="res://scripts/systems/basic_health.gd" id="9_bouv8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bi45e"]
@@ -120,11 +120,11 @@ radius = 170.857
 [node name="Boss" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_7wqi8")
+script = ExtResource("1_7tplj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_e7b60")
+texture = ExtResource("2_xpor1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_bi45e")
@@ -203,28 +203,27 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_kyqj1")
 
-[node name="DamageDetection" type="Area2D" parent="."]
+[node name="DamageDetection" type="Area2D" parent="." groups=["boss"]]
 position = Vector2(0, -2)
-collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageDetection"]
 shape = SubResource("CircleShape2D_0l3pi")
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
-script = ExtResource("2_s8df8")
+script = ExtResource("3_kcowh")
 
 [node name="Idle" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("3_uje48")
+script = ExtResource("4_cktc5")
 
 [node name="Shoot" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("5_2v0re")
+script = ExtResource("5_8b8a0")
 bullet_node = ExtResource("6_58deo")
 
 [node name="Dash" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("6_e72ym")
+script = ExtResource("7_0uxuc")
 
 [node name="Move" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("7_a8hum")
+script = ExtResource("8_jwjaa")
 
 [node name="AoE" type="Node2D" parent="FiniteStateMachine"]
 
