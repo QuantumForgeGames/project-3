@@ -4,6 +4,8 @@ extends Node
 @export var main_menu_scene :PackedScene
 @export var settings_menu_scene :PackedScene
 @export var level_scenes :Array[PackedScene]
+@export var game_win_scene :PackedScene
+@export var game_lose_scene :PackedScene
 
 var current_level_instance: Node = null
 var settings_menu_instance: Node = null
@@ -20,6 +22,13 @@ func load_main_menu():
     # get_tree().change_scene_to_packed(main_menu_scene)
 
     AudioManager.toggle_music()
+
+
+func load_game_over (win_ :bool) -> void:
+    if win_:
+        change_scene(game_win_scene)
+    else:
+        change_scene(game_lose_scene)
 
 
 func load_level(level_index: int):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4k5vp15vukdy"]
+[gd_scene load_steps=12 format=3 uid="uid://c4k5vp15vukdy"]
 
 [ext_resource type="Script" path="res://scenes/levels/main_menu/main_menu.gd" id="1_anatk"]
 [ext_resource type="Texture2D" uid="uid://d25amajce65oh" path="res://scenes/levels/main_menu/MainMenu_Background.png" id="2_btojt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://guyt4gyd5flt" path="res://scenes/levels/main_menu/MainMenu_Button_Hovered.png" id="5_772l6"]
 [ext_resource type="Texture2D" uid="uid://7leglwm3ne1d" path="res://scenes/levels/main_menu/MainMenu_Panel_Two.png" id="8_md05w"]
 [ext_resource type="Texture2D" uid="uid://ty5xg0h0com6" path="res://scenes/levels/main_menu/MainMenu_Not_Enough.png" id="9_64foa"]
+[ext_resource type="Texture2D" uid="uid://cxoph8av2lf7w" path="res://assets/images/Starboy_Neutral.png" id="11_i3xus"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -81,7 +82,16 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_ou5wf")
 
+[node name="Starboy" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 866.0
+offset_top = 551.0
+offset_right = 1067.0
+offset_bottom = 752.0
+texture = ExtResource("11_i3xus")
+
 [node name="Doors" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

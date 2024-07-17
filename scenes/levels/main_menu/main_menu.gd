@@ -6,6 +6,8 @@ extends Control
 
 func _ready() -> void:
     _OptionButton_._select_int(0)
+    get_node('Doors').show()
+    get_node('Fog').hide()
 
 
 func _on_open_button_pressed () -> void:
@@ -18,4 +20,13 @@ func _on_settings_button_pressed () -> void:
 
 
 func _on_play_button_pressed():
-    SceneManager.load_level(0)
+
+    var tween = get_tree().create_tween()
+    tween.tween_callback(func(): 
+        get_node('Doors').hide()
+        get_node('Fog').show()
+    )
+    tween.parallel().tween_property(get_node('Starboy'), 'self_modulate:a', 1.0, 2.0).from(0.0)
+    tween.tween_callback(func(): 
+        SceneManager.load_level(0)
+    )
