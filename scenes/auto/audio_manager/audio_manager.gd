@@ -26,6 +26,12 @@ extends Node2D
 @export_group("player")
 @export var audio_player_death :AudioStreamWAV
 
+@export_group("boss")
+@export var audio_boss_death :AudioStreamWAV
+@export var audio_boss_dash :AudioStreamWAV
+@export var audio_boss_laser :AudioStreamWAV
+@export var audio_boss_damage :Array[AudioStreamWAV] = []
+
 
 func _ready () -> void:
     _MenuMusic.play()

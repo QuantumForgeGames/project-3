@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bnpcxbmw6v6mx"]
+[gd_scene load_steps=30 format=3 uid="uid://bnpcxbmw6v6mx"]
 
 [ext_resource type="Script" path="res://scenes/auto/audio_manager/audio_manager.gd" id="1_h7maf"]
 [ext_resource type="AudioStream" uid="uid://bs43hkh0t67ce" path="res://assets/audio/sx_mechjam_int_vinebreaking1.wav" id="2_j61ki"]
@@ -19,8 +19,16 @@
 [ext_resource type="AudioStream" uid="uid://bawdue8b8kotk" path="res://assets/audio/sx_mechjam_plr_laserready.wav" id="17_j3unp"]
 [ext_resource type="AudioStream" uid="uid://b6q1eyqrs1rjy" path="res://assets/audio/sx_mechjam_plr_playerdeath.wav" id="18_48nbs"]
 [ext_resource type="AudioStream" uid="uid://c6cttuq1nb1yn" path="res://assets/audio/sx_mechjam_env_ambientloop.wav" id="19_6q1gk"]
+[ext_resource type="AudioStream" uid="uid://ng7p02t5pauj" path="res://assets/audio/final/sx_mechjam_npc_bossdeath.wav" id="19_ap3rp"]
+[ext_resource type="AudioStream" uid="uid://dipd4sovdgnq" path="res://assets/audio/final/sx_mechjam_npc_bossdash.wav" id="20_dd2na"]
 [ext_resource type="AudioStream" uid="uid://dliarnrlmjyoa" path="res://assets/audio/mu_mechjam_menuthemeloop.wav" id="20_ymm3i"]
 [ext_resource type="AudioStream" uid="uid://0j5ykm4bchwq" path="res://assets/audio/mu_mechjam_mainthemeloop.wav" id="21_eamkx"]
+[ext_resource type="AudioStream" uid="uid://ejtthjltpwh2" path="res://assets/audio/final/sx_mechma_npc_bosslaser.wav" id="21_jew66"]
+[ext_resource type="AudioStream" uid="uid://di747hpggn336" path="res://assets/audio/final/sx_mechjam_npc_bosstakesdamage1.wav" id="22_bru72"]
+[ext_resource type="AudioStream" uid="uid://b1u8alastiggf" path="res://assets/audio/final/sx_mechjam_npc_bosstakesdamage2.wav" id="23_fk851"]
+[ext_resource type="AudioStream" uid="uid://ciwiethni3dm5" path="res://assets/audio/final/sx_mechjam_npc_bosstakesdamage3.wav" id="24_7yjs6"]
+[ext_resource type="AudioStream" uid="uid://db5cs7f6ff0g6" path="res://assets/audio/final/sx_mechjam_npc_bosstakesdamage4.wav" id="25_1ik3j"]
+[ext_resource type="AudioStream" uid="uid://e7d1dllndcaw" path="res://assets/audio/final/sx_mechjam_npc_bosstakesdamage5.wav" id="26_7s1yp"]
 
 [node name="AudioManager" type="Node2D" node_paths=PackedStringArray("_AudioSpawner", "_LevelMusic", "_MenuMusic", "_AmbientSound")]
 process_mode = 3
@@ -39,6 +47,10 @@ audio_laser_fire_loop = ExtResource("15_mi5i7")
 audio_laser_overheat = ExtResource("16_30f88")
 audio_laser_ready = ExtResource("17_j3unp")
 audio_player_death = ExtResource("18_48nbs")
+audio_boss_death = ExtResource("19_ap3rp")
+audio_boss_dash = ExtResource("20_dd2na")
+audio_boss_laser = ExtResource("21_jew66")
+audio_boss_damage = Array[AudioStreamWAV]([ExtResource("22_bru72"), ExtResource("23_fk851"), ExtResource("24_7yjs6"), ExtResource("25_1ik3j"), ExtResource("26_7s1yp")])
 
 [node name="AmbientSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_6q1gk")

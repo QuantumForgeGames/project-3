@@ -13,6 +13,7 @@ func transition():
 		get_parent().change_state("Move")
 		
 func dash():
+	AudioManager.play_stream_oneshot(AudioManager.audio_boss_dash)
 	animation_player.play("attack")
 	await animation_player.animation_finished
 	#owner.position.x = move_toward(owner.position.x, -owner.DASH_END_POSITION, 15)
