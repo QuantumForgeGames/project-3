@@ -1,14 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://bgaj8qr710x4h"]
+[gd_scene load_steps=20 format=3 uid="uid://bgaj8qr710x4h"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/laser/laser.gd" id="1_66fgv"]
-[ext_resource type="Texture2D" uid="uid://cotrxso3akx7v" path="res://scenes/entities/player/laser/beam_sprite.png" id="2_olapc"]
-[ext_resource type="Texture2D" uid="uid://beeo2wvq15bk7" path="res://scenes/entities/player/laser/orb_sprite_03.png" id="4_2vpx6"]
-[ext_resource type="Texture2D" path="res://scenes/entities/player/laser/test.tres" id="4_kd2lo"]
-[ext_resource type="Texture2D" uid="uid://cm0enjdlngxyj" path="res://scenes/entities/player/laser/orb_sprite_01.png" id="5_l3vc2"]
-[ext_resource type="Texture2D" uid="uid://b7o2m1wwef1re" path="res://scenes/entities/player/laser/orb_sprite_04.png" id="5_y2cu5"]
-[ext_resource type="Texture2D" uid="uid://detp12ye8kj33" path="res://scenes/entities/player/laser/orb_sprite_02.png" id="6_e4dkk"]
-[ext_resource type="Texture2D" uid="uid://bs377acd5mrae" path="res://scenes/entities/player/laser/ring_frame_01.png" id="7_x6csq"]
-[ext_resource type="Texture2D" uid="uid://djdkueau8r4yi" path="res://scenes/entities/player/laser/ring_frame_02.png" id="8_1im6c"]
+[ext_resource type="Texture2D" uid="uid://boslj67c630xa" path="res://scenes/entities/player/laser/beam_sprite.png" id="2_olapc"]
+[ext_resource type="Texture2D" uid="uid://b3mgmogid6lct" path="res://scenes/entities/player/laser/ring_back_1.png" id="3_l7sj3"]
+[ext_resource type="Texture2D" uid="uid://8pijn40dk7bo" path="res://scenes/entities/player/laser/orb_sprite_03.png" id="4_2vpx6"]
+[ext_resource type="Texture2D" uid="uid://mp10xpxuxyqq" path="res://scenes/entities/player/laser/test.tres" id="4_kd2lo"]
+[ext_resource type="Texture2D" uid="uid://byll47ej1cj0n" path="res://scenes/entities/player/laser/orb_sprite_01.png" id="5_l3vc2"]
+[ext_resource type="Texture2D" uid="uid://bhp0l07rc0xl1" path="res://scenes/entities/player/laser/orb_sprite_04.png" id="5_y2cu5"]
+[ext_resource type="Texture2D" uid="uid://bci4a2j5oxg34" path="res://scenes/entities/player/laser/orb_sprite_02.png" id="6_e4dkk"]
+[ext_resource type="Texture2D" uid="uid://clgpr44nd65cl" path="res://scenes/entities/player/laser/ring_front_1.png" id="9_5t0vp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o0tpe"]
 
@@ -53,7 +53,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RingSprite:modulate")
+tracks/3/path = NodePath("RingFrontSprite:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -65,10 +65,34 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("RingSprite2:modulate")
+tracks/4/path = NodePath("RingBackSprite:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RingFrontSprite2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RingBackSprite2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -93,7 +117,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RingSprite:modulate")
+tracks/1/path = NodePath("RingFrontSprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -105,10 +129,34 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RingSprite2:modulate")
+tracks/2/path = NodePath("RingBackSprite:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RingFrontSprite2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RingBackSprite2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -191,28 +239,6 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2s1f6"]
-atlas = ExtResource("7_x6csq")
-region = Rect2(0, 0, 32, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0gd6q"]
-atlas = ExtResource("8_1im6c")
-region = Rect2(0, 0, 32, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_natbq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2s1f6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0gd6q")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Laser" type="Node2D"]
 script = ExtResource("1_66fgv")
 
@@ -236,6 +262,17 @@ hframes = 2
 vframes = 4
 frame = 2
 
+[node name="RingBackSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(40, 1)
+texture = ExtResource("3_l7sj3")
+
+[node name="RingBackSprite2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(81, 1)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_l7sj3")
+
 [node name="Line2D" type="Line2D" parent="."]
 texture_repeat = 2
 position = Vector2(31, 1)
@@ -251,22 +288,16 @@ sprite_frames = SubResource("SpriteFrames_ao7t4")
 autoplay = "default"
 speed_scale = 10.0
 
-[node name="RingSprite" type="AnimatedSprite2D" parent="."]
+[node name="RingFrontSprite" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(40, 1)
-sprite_frames = SubResource("SpriteFrames_natbq")
-autoplay = "default"
-frame_progress = 0.544166
-speed_scale = 10.0
+texture = ExtResource("9_5t0vp")
 
-[node name="RingSprite2" type="AnimatedSprite2D" parent="."]
+[node name="RingFrontSprite2" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(81, 1)
 scale = Vector2(0.75, 0.75)
-sprite_frames = SubResource("SpriteFrames_natbq")
-autoplay = "default"
-frame_progress = 0.544166
-speed_scale = 10.0
+texture = ExtResource("9_5t0vp")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

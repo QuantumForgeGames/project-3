@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cd36fbnt00w6x"]
+[gd_scene load_steps=16 format=3 uid="uid://cd36fbnt00w6x"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/scripts/player.gd" id="1_c7xkt"]
-[ext_resource type="Texture2D" uid="uid://c6un28yetg271" path="res://scenes/entities/player/Character.png" id="2_7odd2"]
+[ext_resource type="Texture2D" uid="uid://citj24h1lx5fx" path="res://scenes/entities/player/Character.png" id="2_7odd2"]
 [ext_resource type="Script" path="res://scenes/entities/player/scripts/movement.gd" id="2_w42of"]
 [ext_resource type="Script" path="res://scenes/entities/player/scripts/collision.gd" id="3_d7uck"]
 [ext_resource type="Script" path="res://scripts/systems/basic_health.gd" id="4_0wo8a"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://b63an5xu4n3jf" path="res://scenes/systems/health.tscn" id="6_f0kxb"]
 [ext_resource type="PackedScene" uid="uid://bgaj8qr710x4h" path="res://scenes/entities/player/laser/laser.tscn" id="8_ukwji"]
 [ext_resource type="PackedScene" uid="uid://buoufy1kqsjer" path="res://scenes/entities/player/jetpack/propulsion.tscn" id="9_j55bp"]
+[ext_resource type="Texture2D" uid="uid://cnuwutv4rrk2e" path="res://scenes/entities/player/ui/ui_container.png" id="10_mdm3a"]
+[ext_resource type="FontFile" uid="uid://cuvsev0nrykeu" path="res://assets/Orbitron-VariableFont_wght.ttf" id="10_s5jn5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i18dh"]
 radius = 44.0
@@ -93,15 +95,83 @@ shape = SubResource("CapsuleShape2D_i18dh")
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_i18dh")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 81.0
-offset_top = -119.0
-offset_right = 121.0
-offset_bottom = -96.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_na4uf")
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI"]
+modulate = Color(1, 1, 1, 0.898039)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -1185.0
+offset_right = 512.0
+offset_bottom = -673.0
+grow_vertical = 0
+texture = ExtResource("10_mdm3a")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -1043.0
+offset_right = 446.0
+offset_bottom = -867.0
+grow_vertical = 0
+theme_override_constants/margin_left = 96
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer"]
+layout_mode = 2
+
+[node name="JetpackFuelLabel" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.984314, 0.658824, 0, 1)
+theme_override_fonts/font = ExtResource("10_s5jn5")
+theme_override_font_sizes/font_size = 32
+text = "Jetpack Fuel"
+uppercase = true
+
+[node name="FuelValueLabel" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.984314, 0.658824, 0, 1)
+theme_override_fonts/font = ExtResource("10_s5jn5")
+theme_override_font_sizes/font_size = 32
+text = "100"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="LaserOverheatLabel" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.556863, 0.792157, 0.901961, 1)
+theme_override_fonts/font = ExtResource("10_s5jn5")
+theme_override_font_sizes/font_size = 32
+text = "Laser Overheat"
+uppercase = true
+
+[node name="OverheatValue" type="Label" parent="CanvasLayer/UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.556863, 0.792157, 0.901961, 1)
+theme_override_fonts/font = ExtResource("10_s5jn5")
+theme_override_font_sizes/font_size = 32
+text = "100"
+horizontal_alignment = 1
+uppercase = true
 
 [connection signal="area_entered" from="view/Area2D" to="process/Collision" method="_on_area_2d_area_entered"]
