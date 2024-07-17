@@ -29,3 +29,4 @@ func shoot():
     animation_player.play("attack")
     await animation_player.animation_finished
     instantiate_bullet()
+    AudioManager.play_stream_oneshot(AudioManager.audio_boss_laser)

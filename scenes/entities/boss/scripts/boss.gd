@@ -11,6 +11,7 @@ const DASH_START_POSITION: int = 1550
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var health: int = 100
+var audio_cue_timout: float = 1.0
 
 @onready var _health :Node = $'Health'
 var _process_damages: Array = []
@@ -24,6 +25,10 @@ func _ready () -> void:
 func _process (delta_) -> void:
     for node in _process_damages:
         node.take_damage(delta_ * 40.0)
+        if audio_cue_timout > 0.75:
+            AudioManager.play_stream_oneshot(AudioManager.audio_boss_damage.pick_random())
+            audio_cue_timout = 0.0
+        audio_cue_timout += delta_
 
 
 func _physics_process (_delta) -> void:
@@ -46,10 +51,15 @@ func _physics_process (_delta) -> void:
 
     #move_and_slide()
 
+func _notification(_what :int) -> void:
+    if _what == NOTIFICATION_PREDELETE:
+        AudioManager.play_stream_oneshot(AudioManager.audio_boss_death)
+
 
 func _on_damage_detection_area_entered (_marea) -> void:
     if not _process_damages.has(_health):
         _process_damages.append(_health)
+        audio_cue_timout = 1.0
 
 func _on_damage_detection_area_exited (_area) -> void:
     if _process_damages.has(_health):
