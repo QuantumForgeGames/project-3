@@ -26,11 +26,18 @@ func _ready():
 
 func take_damage (damage_ :float) -> void:
     _health -= damage_
+    update.emit(_health)
+
     if _health <= 0.0:
         died.emit()
-        _owner.queue_free()
+        if _owner.name == 'Player':
+            await get_tree().create_timer(1.0).timeout
+            SceneManager.load_game_over(false)
+        elif _owner.name == 'Boss':
+            await get_tree().create_timer(1.0).timeout
+            SceneManager.load_game_over(true)
+        else: _owner.queue_free()
         return
-    update.emit(_health)
 
 
 func take_heal (heal_ :float) -> void:

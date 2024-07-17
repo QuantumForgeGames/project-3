@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://csapnv2bsg2wn"]
+[gd_scene load_steps=10 format=3 uid="uid://csapnv2bsg2wn"]
 
 [ext_resource type="Script" path="res://scenes/auto/scene_manager/scene_manager.gd" id="1_xfldy"]
 [ext_resource type="PackedScene" uid="uid://c4k5vp15vukdy" path="res://scenes/levels/main_menu/main_menu.tscn" id="2_xg846"]
@@ -7,9 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://ol3cjkie1dvl" path="res://scenes/levels/test_level_1/test_level.tscn" id="5_2sw70"]
 [ext_resource type="PackedScene" uid="uid://bagrv80vxbeak" path="res://scenes/levels/test_level_2/test_level_2.tscn" id="6_ox3rs"]
 [ext_resource type="PackedScene" uid="uid://brwlfj8mxhq8g" path="res://scenes/levels/test_level_3/test_level.tscn" id="7_bv38r"]
+[ext_resource type="PackedScene" uid="uid://dl55b06tbkpoc" path="res://scenes/levels/game_over/game_win.tscn" id="8_fr25p"]
+[ext_resource type="PackedScene" uid="uid://bcsps08vbhvof" path="res://scenes/levels/game_over/game_lose.tscn" id="9_5omt2"]
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_xfldy")
 main_menu_scene = ExtResource("2_xg846")
 settings_menu_scene = ExtResource("3_oktu1")
 level_scenes = Array[PackedScene]([ExtResource("4_1aj28"), ExtResource("5_2sw70"), ExtResource("6_ox3rs"), ExtResource("7_bv38r")])
+game_win_scene = ExtResource("8_fr25p")
+game_lose_scene = ExtResource("9_5omt2")
