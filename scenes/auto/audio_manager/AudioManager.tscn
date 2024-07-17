@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bnpcxbmw6v6mx"]
+[gd_scene load_steps=22 format=3 uid="uid://bnpcxbmw6v6mx"]
 
 [ext_resource type="Script" path="res://scenes/auto/audio_manager/audio_manager.gd" id="1_h7maf"]
 [ext_resource type="AudioStream" uid="uid://bs43hkh0t67ce" path="res://assets/audio/sx_mechjam_int_vinebreaking1.wav" id="2_j61ki"]
@@ -19,12 +19,16 @@
 [ext_resource type="AudioStream" uid="uid://bawdue8b8kotk" path="res://assets/audio/sx_mechjam_plr_laserready.wav" id="17_j3unp"]
 [ext_resource type="AudioStream" uid="uid://b6q1eyqrs1rjy" path="res://assets/audio/sx_mechjam_plr_playerdeath.wav" id="18_48nbs"]
 [ext_resource type="AudioStream" uid="uid://c6cttuq1nb1yn" path="res://assets/audio/sx_mechjam_env_ambientloop.wav" id="19_6q1gk"]
+[ext_resource type="AudioStream" uid="uid://dliarnrlmjyoa" path="res://assets/audio/mu_mechjam_menuthemeloop.wav" id="20_ymm3i"]
+[ext_resource type="AudioStream" uid="uid://0j5ykm4bchwq" path="res://assets/audio/mu_mechjam_mainthemeloop.wav" id="21_eamkx"]
 
-[node name="AudioManager" type="Node2D" node_paths=PackedStringArray("_AudioSpawner", "_BackgroundMusic")]
+[node name="AudioManager" type="Node2D" node_paths=PackedStringArray("_AudioSpawner", "_LevelMusic", "_MenuMusic", "_AmbientSound")]
 process_mode = 3
 script = ExtResource("1_h7maf")
 _AudioSpawner = NodePath("AudioSpawner")
-_BackgroundMusic = NodePath("BackgroundMusic")
+_LevelMusic = NodePath("LevelMusic")
+_MenuMusic = NodePath("MenuMusic")
+_AmbientSound = NodePath("AmbientSound")
 audio_vines_breaking = Array[AudioStreamWAV]([ExtResource("2_j61ki"), ExtResource("3_l8lq0"), ExtResource("4_w7537"), ExtResource("5_63hcu")])
 audio_vines_moving = Array[AudioStreamWAV]([ExtResource("6_jttus"), ExtResource("7_ksdxy"), ExtResource("8_cnaw8"), ExtResource("9_cdtn4"), ExtResource("10_36axy")])
 audio_jetpack_fire_initial = ExtResource("11_1rall")
@@ -36,7 +40,13 @@ audio_laser_overheat = ExtResource("16_30f88")
 audio_laser_ready = ExtResource("17_j3unp")
 audio_player_death = ExtResource("18_48nbs")
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+[node name="AmbientSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_6q1gk")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_ymm3i")
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_eamkx")
 
 [node name="AudioSpawner" type="Node" parent="."]

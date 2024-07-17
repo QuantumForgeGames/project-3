@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/levels/test_base_level/base_level.gd" id="1_ljp63"]
 [ext_resource type="Script" path="res://scripts/systems/basic_spawner.gd" id="2_06y4u"]
 [ext_resource type="Script" path="res://scripts/systems/parallax_scroller.gd" id="2_lknes"]
-[ext_resource type="Texture2D" uid="uid://chi6471o6pwlb" path="res://assets/images/Game Jam 3 BG.png" id="2_vurj8"]
+[ext_resource type="Texture2D" uid="uid://418ldhdxskh2" path="res://assets/images/Game Jam 3 BG.png" id="2_vurj8"]
 [ext_resource type="PackedScene" uid="uid://yl6w74en5kkn" path="res://scenes/objects/blast_doors/blast_doors.tscn" id="3_xciec"]
 [ext_resource type="PackedScene" uid="uid://cd36fbnt00w6x" path="res://scenes/entities/player/player.tscn" id="6_0dldi"]
 
@@ -12,10 +12,6 @@
 [node name="BaseLevel" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_ljp63")
-
-[node name="GameJam3Bg" type="Sprite2D" parent="."]
-position = Vector2(960, 541)
-texture = ExtResource("2_vurj8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -79,10 +75,10 @@ script = ExtResource("2_lknes")
 [node name="ParallaxLayer" type="ParallaxLayer" parent="view/ParallaxBackground"]
 motion_offset = Vector2(100, 0)
 motion_mirroring = Vector2(1920, 0)
-metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="view/ParallaxBackground/ParallaxLayer"]
 position = Vector2(960, 540)
+texture = ExtResource("2_vurj8")
 
 [node name="BlastDoorSpawner" type="Node2D" parent="view"]
 position = Vector2(2004, 540)
@@ -99,7 +95,7 @@ position = Vector2(0, 1080)
 shape = SubResource("WorldBoundaryShape2D_eyq37")
 
 [node name="TestTimer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 15.247
 one_shot = true
 autostart = true
 

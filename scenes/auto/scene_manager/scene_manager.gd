@@ -12,10 +12,14 @@ func _ready () -> void:
     await get_tree().root.ready
     get_tree().root.get_child(-1).queue_free()
     load_main_menu()
+    AudioManager.toggle_music()
+
 
 func load_main_menu():
     change_scene(main_menu_scene)
     # get_tree().change_scene_to_packed(main_menu_scene)
+
+    AudioManager.toggle_music()
 
 
 func load_level(level_index: int):
@@ -26,6 +30,7 @@ func load_level(level_index: int):
     else:
         print("Invalid level index")
 
+    AudioManager.toggle_music()
 
 
 func load_settings_menu():
