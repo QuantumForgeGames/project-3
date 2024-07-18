@@ -8,9 +8,9 @@ on:
 
 env:
   GODOT_VERSION: 4.2.2
-  EXPORT_NAME: project-3
+  EXPORT_NAME: alien-clean-up
   ITCH_USERNAME: quantum-forge-games
-  ITCH_GAME_ID: project-3
+  ITCH_GAME_ID: alien-clean-up
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
