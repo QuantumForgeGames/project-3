@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0rb23dvslh8"]
+[gd_scene load_steps=5 format=3 uid="uid://c0rb23dvslh8"]
 
+[ext_resource type="Texture2D" uid="uid://chi6471o6pwlb" path="res://assets/images/Game Jam 3 BG.png" id="1_em4m7"]
 [ext_resource type="PackedScene" uid="uid://1h4og74ox6c5" path="res://scenes/entities/boss/boss.tscn" id="1_h0fjt"]
 [ext_resource type="PackedScene" uid="uid://cd36fbnt00w6x" path="res://scenes/entities/player/player.tscn" id="2_nk8ew"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ftda2"]
 
 [node name="BossRoom" type="Node2D"]
+
+[node name="GameJam3Bg" type="Sprite2D" parent="."]
+texture = ExtResource("1_em4m7")
+centered = false
 
 [node name="View" type="Node2D" parent="."]
 

@@ -18,49 +18,49 @@ var _process_damages: Array = []
 
 
 func _ready () -> void:
-    _health.update.connect($'UI/ProgressBar'.handle_update)
-    progress_bar.value = health
+	_health.update.connect($'UI/ProgressBar'.handle_update)
+	progress_bar.value = health
 
 
 func _process (delta_) -> void:
-    for node in _process_damages:
-        node.take_damage(delta_ * 40.0)
-        if audio_cue_timout > 0.75:
-            AudioManager.play_stream_oneshot(AudioManager.audio_boss_damage.pick_random())
-            audio_cue_timout = 0.0
-        audio_cue_timout += delta_
+	for node in _process_damages:
+		node.take_damage(delta_ * 4.0)
+		if audio_cue_timout > 0.75:
+			AudioManager.play_stream_oneshot(AudioManager.audio_boss_damage.pick_random())
+			audio_cue_timout = 0.0
+		audio_cue_timout += delta_
 
 
 func _physics_process (_delta) -> void:
-    pass
-    # Add the gravity.
-    #if not is_on_floor():
-        #velocity.y += gravity * delta
+	pass
+	# Add the gravity.
+	#if not is_on_floor():
+		#velocity.y += gravity * delta
 #
-    ## Handle jump.
-    #if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-        #velocity.y = JUMP_VELOCITY
+	## Handle jump.
+	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		#velocity.y = JUMP_VELOCITY
 
-    # Get the input direction and handle the movement/deceleration.
-    # As good practice, you should replace UI actions with custom gameplay actions.
-    #var direction = Input.get_axis("ui_left", "ui_right")
-    #if direction:
-        #velocity.x = direction * SPEED
-    #else:
-        #velocity.x = move_toward(velocity.x, 0, SPEED)
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	#var direction = Input.get_axis("ui_left", "ui_right")
+	#if direction:
+		#velocity.x = direction * SPEED
+	#else:
+		#velocity.x = move_toward(velocity.x, 0, SPEED)
 
-    #move_and_slide()
+	#move_and_slide()
 
 func _notification(_what :int) -> void:
-    if _what == NOTIFICATION_PREDELETE:
-        AudioManager.play_stream_oneshot(AudioManager.audio_boss_death)
+	if _what == NOTIFICATION_PREDELETE:
+		AudioManager.play_stream_oneshot(AudioManager.audio_boss_death)
 
 
 func _on_damage_detection_area_entered (_marea) -> void:
-    if not _process_damages.has(_health):
-        _process_damages.append(_health)
-        audio_cue_timout = 1.0
+	if not _process_damages.has(_health):
+		_process_damages.append(_health)
+		audio_cue_timout = 1.0
 
 func _on_damage_detection_area_exited (_area) -> void:
-    if _process_damages.has(_health):
-        _process_damages.erase(_health)
+	if _process_damages.has(_health):
+		_process_damages.erase(_health)

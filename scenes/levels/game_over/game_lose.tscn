@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcsps08vbhvof"]
+[gd_scene load_steps=4 format=3 uid="uid://bcsps08vbhvof"]
+
+[ext_resource type="FontFile" uid="uid://cuvsev0nrykeu" path="res://assets/Orbitron-VariableFont_wght.ttf" id="1_6qwpq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hewtl"]
 font_size = 57
@@ -29,11 +31,19 @@ grow_vertical = 2
 color = Color(0.0703125, 0.0703125, 0.0703125, 1)
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 825.0
-offset_top = 389.0
-offset_right = 889.0
-offset_bottom = 412.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -147.0
+offset_right = 146.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_6qwpq")
 text = "You Lose"
 label_settings = SubResource("LabelSettings_hewtl")
 
@@ -43,6 +53,7 @@ offset_left = 871.0
 offset_top = 590.0
 offset_right = 1065.0
 offset_bottom = 645.0
+theme_override_fonts/font = ExtResource("1_6qwpq")
 theme_override_font_sizes/font_size = 34
 text = "Main Menu"
 script = SubResource("GDScript_p0crm")

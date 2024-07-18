@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/levels/test_base_level/base_level.gd" id="1_ljp63"]
 [ext_resource type="Script" path="res://scripts/systems/basic_spawner.gd" id="2_06y4u"]
 [ext_resource type="Script" path="res://scripts/systems/parallax_scroller.gd" id="2_lknes"]
-[ext_resource type="Texture2D" uid="uid://418ldhdxskh2" path="res://assets/images/Game Jam 3 BG.png" id="2_vurj8"]
+[ext_resource type="Texture2D" uid="uid://chi6471o6pwlb" path="res://assets/images/Game Jam 3 BG.png" id="2_vurj8"]
 [ext_resource type="PackedScene" uid="uid://yl6w74en5kkn" path="res://scenes/objects/blast_doors/blast_doors.tscn" id="3_xciec"]
 [ext_resource type="PackedScene" uid="uid://cd36fbnt00w6x" path="res://scenes/entities/player/player.tscn" id="6_0dldi"]
 
@@ -95,7 +95,7 @@ position = Vector2(0, 1080)
 shape = SubResource("WorldBoundaryShape2D_eyq37")
 
 [node name="TestTimer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 60.0
 one_shot = true
 autostart = true
 

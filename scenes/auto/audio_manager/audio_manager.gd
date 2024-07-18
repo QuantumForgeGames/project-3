@@ -34,37 +34,37 @@ extends Node2D
 
 
 func _ready () -> void:
-    _MenuMusic.play()
-    _AmbientSound.play()
+	_MenuMusic.play()
+	_AmbientSound.play()
 
 
 func play_stream_oneshot (stream :AudioStream) -> AudioStreamPlayer:
-    var audio_player = AudioStreamPlayer.new()
-    _AudioSpawner.add_child(audio_player)
-    audio_player.stream = stream
-    audio_player.finished.connect(func(): audio_player.queue_free())
-    audio_player.play()
-    return audio_player
+	var audio_player = AudioStreamPlayer.new()
+	_AudioSpawner.add_child(audio_player)
+	audio_player.stream = stream
+	audio_player.finished.connect(func(): audio_player.queue_free())
+	audio_player.play()
+	return audio_player
 
 
 func get_play_stream_reference (stream :AudioStream) -> AudioStreamPlayer:
-    var audio_player = AudioStreamPlayer.new()
-    _AudioSpawner.add_child(audio_player)
-    audio_player.stream = stream
-    audio_player.finished.connect(func(): audio_player.queue_free())
-    audio_player.play()
-    return audio_player
+	var audio_player = AudioStreamPlayer.new()
+	_AudioSpawner.add_child(audio_player)
+	audio_player.stream = stream
+	audio_player.finished.connect(func(): audio_player.queue_free())
+	audio_player.play()
+	return audio_player
 
 
 func clean_up_audio_players () -> void:
-    for child in _AudioSpawner.get_children():
-        child.queue_free()
+	for child in _AudioSpawner.get_children():
+		child.queue_free()
 
 
 func toggle_music () -> void:
-    if _LevelMusic.playing:
-        _LevelMusic.stop()
-        _MenuMusic.play(0.0)
-    else:
-        _MenuMusic.stop()
-        _LevelMusic.play(0.0)
+	if _LevelMusic.playing:
+		_LevelMusic.stop()
+		_MenuMusic.play(0.0)
+	else:
+		_MenuMusic.stop()
+		_LevelMusic.play(0.0)

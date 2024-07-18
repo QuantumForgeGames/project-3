@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl55b06tbkpoc"]
+[gd_scene load_steps=5 format=3 uid="uid://dl55b06tbkpoc"]
+
+[ext_resource type="FontFile" uid="uid://cuvsev0nrykeu" path="res://assets/Orbitron-VariableFont_wght.ttf" id="1_bsmj5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hewtl"]
 font_size = 57
@@ -10,6 +12,10 @@ script/source = "extends Button
 func _on_pressed():
     SceneManager.load_main_menu()
 "
+
+[sub_resource type="Gradient" id="Gradient_xoj7h"]
+offsets = PackedFloat32Array(0, 0.173653, 0.413174, 0.679641, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1)
 
 [node name="GameWin" type="Control"]
 layout_mode = 3
@@ -29,21 +35,43 @@ grow_vertical = 2
 color = Color(0.0703125, 0.0703125, 0.0703125, 1)
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 825.0
-offset_top = 389.0
-offset_right = 889.0
-offset_bottom = 412.0
-text = "You Win"
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -125.0
+offset_right = 147.5
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_bsmj5")
+text = "You Win!"
 label_settings = SubResource("LabelSettings_hewtl")
+uppercase = true
 
 [node name="Button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 871.0
 offset_top = 590.0
 offset_right = 1065.0
 offset_bottom = 645.0
+theme_override_fonts/font = ExtResource("1_bsmj5")
 theme_override_font_sizes/font_size = 34
 text = "Main Menu"
 script = SubResource("GDScript_2lg4b")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(953, 1073)
+rotation = -1.5708
+amount = 743
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+initial_velocity_max = 1000.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_xoj7h")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
